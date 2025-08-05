@@ -53,4 +53,8 @@ std::string Block::toString() const {
 	return ss.str();
 }
 
+bool Block::isLinkedTo(const Block& previousBlock) const {
+    return previousHash == previousBlock.hash && index == previousBlock.index + 1;
+}
+
 
