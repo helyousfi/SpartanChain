@@ -96,6 +96,20 @@ void Blockchain::printChain() const {
 	}
 }
 
+const Block& Blockchain::getLatestBlock() const {
+	return chain.back();
+}
+
+void Blockchain::reset() {
+	chain.clear();
+	pendingTransactions.clear();
+
+	Transaction genesisTx(SYSTEM_ADDRESS, NETWORK_ADDRESS, 0);
+	std::vector<Transaction> genesisTxs = {genesisTx};
+	Block genesisBlock(0, "0", genesisTxs);
+	genesisBlock.mine(difficulty);
+	chain.push_back(genesisBlock);
+}
 
 
 
