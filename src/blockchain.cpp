@@ -36,6 +36,15 @@ void Blockchain::addTransaction(Transaction&& tx)
 
 void Blockchain::minePendingTransaction(const std::string& minerAddress)
 {
+	if (pendingTransactions.empty()) {
+        	if (isVerboseLoggingEnabled) {
+            		std::cout << "[DEBUG] No pending transactions to mine.\n";
+        	}
+        	return;
+    	}
+	if (isVerboseLoggingEnabled ) {
+        	std::cout << "[DEBUG] Creating new block with pending transactions...\n";
+    	}
 	Transaction rewardTx(SYSTEM_ADDRESS, minerAddress, miningReward);
 	pendingTransactions.push_back(rewardTx);
 
