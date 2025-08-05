@@ -20,7 +20,7 @@ Block::Block(int idx, std::string prevHash, std::vector<Transaction> trx) :
 
 
 std::string Block::calculateHash() const{
-	std::stringsteam ss;
+	std::stringstream ss;
 	ss << index << previousHash << timestamp << nonce;
 	for(const auto& tx:transactions)
 	{
