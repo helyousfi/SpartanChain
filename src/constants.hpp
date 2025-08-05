@@ -1,3 +1,5 @@
 #pragma once
-constexpr auto SYSTEM_ADDRESS = "SYSTEM";
-constexpr auto NETWORK_ADDRESS = "NETWORK";
+#include <string_view>
+
+constexpr std::string_view SYSTEM_ADDRESS = "SYSTEM";
+constexpr std::string_view NETWORK_ADDRESS = "NETWORK";
