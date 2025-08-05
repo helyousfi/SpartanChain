@@ -14,4 +14,5 @@ public:
 	void mine(int difficulty);
 
 	std::string Block::toString() const; // For debug purpose
+	bool isLinkedTo(const Block& previousBlock) const;
 };
