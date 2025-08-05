@@ -9,12 +9,11 @@
 Block::Block(int idx, const std::string& prevHash, const std::vector<Transaction>& trx) : 
 	index(idx), previousHash(prevHash), transactions(trx), nonce(0)
 {
+	// Calculate the timestamp
 	auto now = std::chrono::system_clock::now();
 	auto now_time_t = std::chrono::system_clock::to_time_t(now);
-
 	std::stringstream ss;
 	ss << std::put_time(std::gmtime(&now_time_t), "%Y-%m-%d %H:%M:%S");
-
 	timestamp = ss.str();
 	hash = calculateHash();
 }
