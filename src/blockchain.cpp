@@ -49,7 +49,7 @@ void Blockchain::minePendingTransaction(const std::string& minerAddress)
     	}
 	Block newBlock(chain.size(), chain.back().hash, pendingTransactions);
 	newBlock.mine(difficulty);
-	if (verboseLogging) {
+	if (verboseLoggingEnabled) {
         	std::cout << "[DEBUG] New block mined with hash: " << block.getHash() << "\n";
     	}
 	chain.push_back(newBlock);
