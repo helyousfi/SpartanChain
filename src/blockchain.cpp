@@ -1,5 +1,6 @@
-#include "blockchain.hpp"
 #include <iostream>
+#include "blockchain.hpp"
+#include "constants.hpp"
 
 Blockchain::Blockchain()
 {
