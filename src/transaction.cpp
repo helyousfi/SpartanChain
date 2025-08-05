@@ -19,12 +19,11 @@ Transaction::Transaction(std::string fromAdr, std::string toAdr, double amnt) :
 void Transaction::signTransaction(EVP_PKEY* privateKey)
 {
 	if(from == SYSTEM_ADDRESS) return; // no signature for mining rewards
-	std::string data = from + to + std::to_string(amount);
-	signature = Crypto::sign(data, privateKey);
+	signature = Crypto::sign(hash, privateKey);
 }
 std::string Transaction::calculateHash() const{
 	std::stringstream ss;
-	ss << from << to << amount << signature << timestamp;
+	ss << from << to << amount << timestamp;
 	return Crypto::sha256(ss.str());
 }
 bool Transaction::isValid() const {
