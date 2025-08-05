@@ -70,7 +70,7 @@ bool Blockchain::isChainValid() const {
 		{
 			if(!tx.isValid())
 			{
-				std::cerr << "Invalid transaction " << i << std::enld;
+				std::cerr << "Invalid transaction " << i << std::endl;
 				return false;
 			}
 		}
