@@ -1,35 +1,29 @@
-#include "block.hpp"
-#include "transaction.hpp" // Assuming you have a Transaction class
+#include "blockchain.hpp"
+#include "transaction.hpp"
 #include <iostream>
-#include <vector>
 
 int main() {
-    std::vector<Transaction> genesisTransactions = {
-        Transaction("Ahmad", "Bob", 10.0),
-        Transaction("Charlie", "Dave", 5.0)
-    };
+    // Create a blockchain with difficulty 4 and mining reward of 50 coins
+    Blockchain myChain(4, 50);
 
-    // Create the genesis block
-    Block genesisBlock(0, "0", genesisTransactions);
-    genesisBlock.mine(4); // difficulty = 4 leading zeroes
+    // Create a wallet/address for Alice and Bob (just string here)
+    std::string alice = "AliceAddress";
+    std::string bob = "BobAddress";
 
-    std::cout << genesisBlock.toString() << std::endl;
+    // Create some transactions
+    Transaction tx1(alice, bob, 10);
+    tx1.signTransaction(/* Alice's private key here, if implemented */);
 
-    std::vector<Transaction> block1Transactions = {
-        Transaction("Eve", "Frank", 2.5),
-        Transaction("Bob", "Alice", 3.2)
-    };
+    myChain.addTransaction(tx1);
 
-    Block block1(1, genesisBlock.getHash(), block1Transactions);
-    block1.mine(4);
+    // Mine pending transactions, reward goes to Alice
+    myChain.minePendingTransaction(alice);
 
-    std::cout << block1.toString() << std::endl;
+    std::cout << "Balance of Alice: " << myChain.getBalanceOf(alice) << std::endl;
+    std::cout << "Balance of Bob: " << myChain.getBalanceOf(bob) << std::endl;
 
-    if (block1.isLinkedTo(genesisBlock)) {
-        std::cout << "Block 1 is correctly linked to the genesis block.\n";
-    } else {
-        std::cout << "Block linkage error!\n";
-    }
+    // Print the blockchain
+    myChain.printChain();
 
     return 0;
 }
