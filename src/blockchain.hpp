@@ -10,6 +10,8 @@ private:
     static constexpr int DEFAULT_DIFFICULTY = 4;
     static constexpr int DEFAULT_REWARD = 5;
 
+    bool verboseLoggingEnabled{false};
+
     alignas(64) std::vector<Block> chain;
     std::vector<Transaction> pendingTransactions;
     int difficulty;
