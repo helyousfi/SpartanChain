@@ -8,6 +8,7 @@
 #include <iomanip>
 #include <stdexcept>
 #include <cstring>
+#include <string>
 
 namespace Crypto {
 
@@ -43,7 +44,9 @@ namespace Crypto {
 
     std::string getPublicKeyString(EVP_PKEY* key) {
         BIO* bio = BIO_new(BIO_s_mem());
-        if (!bio) throw std::runtime_error("Failed to create BIO");
+        if (!bio) {
+            throw std::runtime_error("Failed to create BIO");
+        }
 
         if (!PEM_write_bio_PUBKEY(bio, key)) {
             BIO_free(bio);
@@ -52,11 +55,29 @@ namespace Crypto {
 
         char* data;
         long len = BIO_get_mem_data(bio, &data);
-        std::string pubKey(data, len);
+        std::string pubKeyStr(data, len);
 
         BIO_free(bio);
+        return pubKeyStr;
+    }
+    
+    EVP_PKEY* getPublicKeyFromString(const std::string& pubKeyStr) {
+        BIO* bio = BIO_new_mem_buf(pubKeyStr.data(), static_cast<int>(pubKeyStr.size()));
+        if (!bio) {
+            throw std::runtime_error("Failed to create BIO for public key string");
+        }
+
+        EVP_PKEY* pubKey = PEM_read_bio_PUBKEY(bio, nullptr, nullptr, nullptr);
+        BIO_free(bio);
+
+        if (!pubKey) {
+            throw std::runtime_error("Failed to parse public key from string");
+        }
+
         return pubKey;
     }
+
+
 
     std::string sign(const std::string& message, EVP_PKEY* privateKey) {
         EVP_MD_CTX* ctx = EVP_MD_CTX_new();

@@ -42,7 +42,7 @@ void Block::mine(int difficulty)
 	std::cout << "Block mined : " << hash << " in " << miningDuration << " seconds." << std::endl; 
 }
 
-std::string Block::toString() const {
+std::string Block::toString() const noexcept {
 	std::stringstream ss;
 	ss << "Block " << index << " [Hash: " << hash << "]\n"
 	   << "Prev: " << previousHash << "\n"
@@ -57,11 +57,11 @@ bool Block::isLinkedTo(const Block& previousBlock) const {
 }
 
 // === Getters ===
-int Block::getIndex() const { return index; }
+int Block::getIndex() const noexcept { return index; }
 const std::string& Block::getPreviousHash() const { return previousHash; }
-const std::string& Block::getHash() const { return hash; }
-const std::vector<Transaction>& Block::getTransactions() const { return transactions;}
-const std::string& Block::getTimestamp() const { return timestamp;}
-std::time_t Block::getRawTimestamp() const { return rawTimestamp; }
-int Block::getNonce() const { return nonce; }
-double Block::getMiningDuration() const { return miningDuration; }
+const std::string& Block::getHash() const noexcept { return hash; }
+const std::vector<Transaction>& Block::getTransactions() const noexcept { return transactions;}
+const std::string& Block::getTimestamp() const noexcept { return timestamp;}
+std::time_t Block::getRawTimestamp() const noexcept { return rawTimestamp; }
+int Block::getNonce() const noexcept { return nonce; }
+double Block::getMiningDuration() const noexcept { return miningDuration; }

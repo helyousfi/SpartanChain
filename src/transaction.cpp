@@ -2,8 +2,11 @@
 #include "constants.hpp"
 #include "crypto.hpp"
 #include <iostream>
+#include <string_view>
+#include <chrono>
 
-Transaction::Transaction(std::string fromAdr, std::string toAdr, double amnt) : 
+// TODO : Overload this constructor with string!
+Transaction::Transaction(std::string_view fromAdr, std::string_view toAdr, double amnt) : 
 	from(std::move(fromAdr)), to(std::move(toAdr)), amount(amnt), signature("") 
 {
 	auto now = std::chrono::system_clock::now();
@@ -34,7 +37,7 @@ bool Transaction::isValid() const {
 		return false;
 	}
 
-	EVP_PKEY* pubKey = Crypto::getPublicKeyString(from);
+	EVP_PKEY* pubKey = Crypto::getPublicKeyFromString(from);
 	if(!pubKey)
 	{
 		std::cerr << "Invalid public key" << std::endl;
@@ -43,4 +46,10 @@ bool Transaction::isValid() const {
 	bool result = Crypto::verify(hash, signature, pubKey);
 	EVP_PKEY_free(pubKey);
 	return result;
+}
+std::string Transaction::toString() const
+{
+        std::stringstream ss;
+	ss << from << to << amount;
+	return ss.str();
 }

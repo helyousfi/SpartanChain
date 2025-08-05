@@ -1,5 +1,9 @@
 #include "wallet.hpp"
 #include "crypto.hpp"
+#include "transaction.hpp"
+#include <openssl/evp.h>
+#include <openssl/err.h>
+#include <openssl/sha.h>
 #include <openssl/pem.h>
 #include <fstream>
 #include <sstream>
@@ -67,11 +71,13 @@ std::string Wallet::getPublicKeyString() const {
     return Crypto::getPublicKeyString(keypair);
 }
 
+EVP_PKEY* Wallet::getPrivateKey() const 
+{
+	return keypair;
+}
+
 Transaction Wallet::createTransaction(const std::string& to, int amount) {
-    Transaction tx;
-    tx.from = this->address;
-    tx.to = to;
-    tx.amount = amount;
+    Transaction tx(this->address, to, amount);
     tx.signature = Crypto::sign(tx.toString(), keypair);
     return tx;
 }

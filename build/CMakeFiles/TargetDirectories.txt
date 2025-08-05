@@ -1,0 +1,3 @@
+/home/vboxuser/Documents/SpartanChain/build/CMakeFiles/spartanchain.dir
+/home/vboxuser/Documents/SpartanChain/build/CMakeFiles/edit_cache.dir
+/home/vboxuser/Documents/SpartanChain/build/CMakeFiles/rebuild_cache.dir

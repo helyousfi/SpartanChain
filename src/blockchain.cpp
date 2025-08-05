@@ -2,40 +2,28 @@
 #include "blockchain.hpp"
 #include "constants.hpp"
 #include <nlohmann/json.hpp>
+#include "transaction.hpp"
+
 using json = nlohmann::json;
 
 Blockchain::Blockchain(int difficulty, int miningReward) : 
 	difficulty(difficulty), miningReward(miningReward)
 {
-	Transaction genesisTx(SYSTEM_ADDRESS, NETWORK_ADDRESS, 0);
+	Transaction genesisTx(SYSTEM_ADDRESS, NETWORK_ADDRESS, 0.0);
 	std::vector<Transaction> genesisTxs = {genesisTx};
 	totalCoinsIssued += 0; // no reward after genesis transaction
 	Block genesisBlock(0, "0", genesisTxs);
 	genesisBlock.mine(difficulty);
-	chain.push_back(genesisBlock);
+	chain.push_back(std::move(genesisBlock));
 }
 
 void Blockchain::addTransaction(const Transaction& tx)
 { 
-	if (tx.amount <= 0) {
+	if (tx.getAmount() <= 0) {
 	    std::cerr << "Transaction amount must be positive. Rejected.\n";
 	    return;
 	}
-	if(tx.from != SYSTEM_ADDRESS && !tx.isValid()) // No verification for mining rewards
-	{
-		std::cerr << "Invalid transaction. Rejected. \n";
-		return;		
-	}
-	pendingTransactions.push_back(tx);
-}
-
-void Blockchain::addTransaction(Transaction&& tx)
-{ 
-	if (tx.amount <= 0) {
-	    std::cerr << "Transaction amount must be positive. Rejected.\n";
-	    return;
-	}
-	if(tx.from != SYSTEM_ADDRESS && !tx.isValid()) // No verification for mining rewards
+	if(tx.getFrom() != SYSTEM_ADDRESS && !tx.isValid()) // No verification for mining rewards
 	{
 		std::cerr << "Invalid transaction. Rejected. \n";
 		return;		
@@ -43,7 +31,21 @@ void Blockchain::addTransaction(Transaction&& tx)
 	pendingTransactions.push_back(std::move(tx));
 }
 
-void Blockchain::minePendingTransaction(const std::string& minerAddress)
+void Blockchain::addTransaction(Transaction&& tx)
+{ 
+	if (tx.getAmount() <= 0) {
+	    std::cerr << "Transaction amount must be positive. Rejected.\n";
+	    return;
+	}
+	if(tx.getFrom() != SYSTEM_ADDRESS && !tx.isValid()) // No verification for mining rewards
+	{
+		std::cerr << "Invalid transaction. Rejected. \n";
+		return;		
+	}
+	pendingTransactions.push_back(std::move(tx));
+}
+
+void Blockchain::minePendingTransaction(std::string_view minerAddress)
 {
 	if (pendingTransactions.empty()) {
         	if (verboseLoggingEnabled) {
@@ -61,24 +63,24 @@ void Blockchain::minePendingTransaction(const std::string& minerAddress)
 	if (verboseLoggingEnabled) {
         	std::cout << "[DEBUG] Creating new block with pending transactions...\n";
     	}
-	Block newBlock(chain.size(), chain.back().hash, pendingTransactions);
+	Block newBlock(chain.size(), chain.back().getHash(), pendingTransactions);
 	newBlock.mine(difficulty);
 	if (verboseLoggingEnabled) {
         	std::cout << "[DEBUG] New block mined with hash: " << newBlock.getHash() << "\n";
     	}
-	chain.push_back(newBlock);
+	chain.push_back(std::move(newBlock));
 	pendingTransactions.clear();
 }
 
-double Blockchain::getBalanceOf(const std::string& address) const {
+double Blockchain::getBalanceOf(std::string_view address) const {
 	double balance = 0;
 	for(const auto& block : chain) {
-		for(const auto& tx : block.transactions)
+		for(const auto& tx : block.getTransactions())
 		{
-			if(tx.from == address)
-				balance -= tx.amount;
-			if(tx.to == address)
-				balance += tx.amount;
+			if(tx.getFrom() == address)
+				balance -= tx.getAmount();
+			if(tx.getTo() == address)
+				balance += tx.getAmount();
 		}
 	}
 	return balance;
@@ -91,17 +93,17 @@ bool Blockchain::isChainValid() const {
 		const Block& current = chain[i];
 		const Block& previous = chain[i-1];
 
-		if(current.hash != current.calculateHash())
+		if(current.getHash() != current.calculateHash())
 		{
 			std::cerr << "Block " << i << " hash mismatch! \n";
 			return false;
 		}
-		if(current.previousHash != previous.hash)
+		if(current.getPreviousHash() != previous.getHash())
 		{
 			std::cerr << "Block " << i << " previous hash mismatch. \n";
 			return false;
 		}
-		for(const auto& tx : current.transactions)
+		for(const auto& tx : current.getTransactions())
 		{
 			if(!tx.isValid())
 			{
@@ -113,19 +115,19 @@ bool Blockchain::isChainValid() const {
 	return true;
 }
 
-void Blockchain::printChain() const {
+void Blockchain::printChain() const noexcept {
 	for(const auto& block : chain)
 	{
-		std::cout << "Block #" << block.index << std::endl; 
-		std::cout << "Hash " << block.hash << std::endl;
-		std::cout << "Prev " << block.previousHash << std::endl;
-		std::cout << "Time " << block.timestamp << std::endl;
-		std::cout << "Nonce " << block.nonce << std::endl;
+		std::cout << "Block #" << block.getIndex() << std::endl; 
+		std::cout << "Hash " << block.getHash() << std::endl;
+		std::cout << "Prev " << block.getPreviousHash() << std::endl;
+		std::cout << "Time " << block.getTimestamp() << std::endl;
+		std::cout << "Nonce " << block.getNonce() << std::endl;
 	       	std::cout << "Transactions : " << std::endl;
-		for(const auto& tx : block.transactions)
+		for(const auto& tx : block.getTransactions())
 		{
-			std::cout << "Transaction: " << tx.from << " -> " << tx.to
-          					     << " | Amount: " << tx.amount << std::endl;
+			std::cout << "Transaction: " << tx.getFrom() << " -> " << tx.getTo()
+          					     << " | Amount: " << tx.getAmount() << std::endl;
 		}
 		std::cout << "Total Coins Issued: " << totalCoinsIssued << "/" << MAX_SUPPLY << "\n";
 		std::cout << "---------------\n"; 
@@ -136,7 +138,7 @@ const Block& Blockchain::getLatestBlock() const noexcept {
 	return chain.back();
 }
 
-void Blockchain::reset() {
+void Blockchain::reset() noexcept {
 	chain.clear();
 	pendingTransactions.clear();
 
@@ -144,7 +146,7 @@ void Blockchain::reset() {
 	std::vector<Transaction> genesisTxs = {genesisTx};
 	Block genesisBlock(0, "0", genesisTxs);
 	genesisBlock.mine(difficulty);
-	chain.push_back(genesisBlock);
+	chain.push_back(std::move(genesisBlock));
 }
 
 std::string Blockchain::serialize() const {
@@ -154,12 +156,12 @@ std::string Blockchain::serialize() const {
     j["chain"] = json::array();
 
     for (const auto& block : chain) {
-        j["chain"].push_back(block.serialize()); // assume Block has serialize() returning json
+        // j["chain"].push_back(block.serialize()); // TODO add serialize() to block
     }
 
     j["pendingTransactions"] = json::array();
     for (const auto& tx : pendingTransactions) {
-        j["pendingTransactions"].push_back(tx.serialize()); // assume Transaction has serialize() returning json
+        // j["pendingTransactions"].push_back(tx.serialize()); // assume Transaction has serialize() returning json
     }
 
     return j.dump();
@@ -171,12 +173,12 @@ Blockchain Blockchain::deserialize(const std::string& data) {
 
     bc.chain.clear();
     for (const auto& b : j["chain"]) {
-        bc.chain.push_back(Block::deserialize(b)); // assume Block::deserialize(json)
+        // bc.chain.push_back(Block::deserialize(b)); // assume Block::deserialize(json)
     }
 
     bc.pendingTransactions.clear();
     for (const auto& tx : j["pendingTransactions"]) {
-        bc.pendingTransactions.push_back(Transaction::deserialize(tx)); // assume Transaction::deserialize(json)
+        // bc.pendingTransactions.push_back(Transaction::deserialize(tx)); // assume Transaction::deserialize(json)
     }
 
     return bc;
