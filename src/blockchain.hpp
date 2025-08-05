@@ -21,7 +21,7 @@ private:
 public:
     explicit Blockchain(int difficulty = DEFAULT_DIFFICULTY, int miningReward = DEFAULT_REWARD);
 
-    void addTransaction(const Transaction& tx);
+    void addTransaction(Transaction&& tx);
     void minePendingTransaction(std::string_view minerAddress);
 
     [[nodiscard]] bool isChainValid() const;
