@@ -15,8 +15,8 @@ Blockchain::Blockchain()
 }
 
 void Blockchain::addTransaction(const Transaction& tx)
-{
-	if(!tx.isValid())
+{ 
+	if(tx.from != SYSTEM_ADDRESS && !tx.isValid())
 	{
 		std::cerr << "Invalid transaction. Rejected. \n";
 		return;		
