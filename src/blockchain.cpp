@@ -1,6 +1,8 @@
 #include <iostream>
 #include "blockchain.hpp"
 #include "constants.hpp"
+#include <nlohmann/json.hpp>
+using json = nlohmann::json;
 
 Blockchain::Blockchain(int difficulty = DEFAULT_DIFFICULTY, int miningReward = DEFAULT_REWARD) : 
 	difficulty(difficulty), miningReward(miningReward)
@@ -119,6 +121,40 @@ void Blockchain::reset() {
 	chain.push_back(genesisBlock);
 }
 
+std::string Blockchain::serialize() const {
+    json j;
+    j["difficulty"] = difficulty;
+    j["miningReward"] = miningReward;
+    j["chain"] = json::array();
+
+    for (const auto& block : chain) {
+        j["chain"].push_back(block.serialize()); // assume Block has serialize() returning json
+    }
+
+    j["pendingTransactions"] = json::array();
+    for (const auto& tx : pendingTransactions) {
+        j["pendingTransactions"].push_back(tx.serialize()); // assume Transaction has serialize() returning json
+    }
+
+    return j.dump();
+}
+
+Blockchain Blockchain::deserialize(const std::string& data) {
+    auto j = json::parse(data);
+    Blockchain bc(j["difficulty"], j["miningReward"]);
+
+    bc.chain.clear();
+    for (const auto& b : j["chain"]) {
+        bc.chain.push_back(Block::deserialize(b)); // assume Block::deserialize(json)
+    }
+
+    bc.pendingTransactions.clear();
+    for (const auto& tx : j["pendingTransactions"]) {
+        bc.pendingTransactions.push_back(Transaction::deserialize(tx)); // assume Transaction::deserialize(json)
+    }
+
+    return bc;
+}
 
 
 
