@@ -36,8 +36,8 @@ void Blockchain::minePendingTransaction(const std::string& minerAddress)
 	pendingTransactions.clear();
 }
 
-int Blockchain::getBalanceOf(const std::string& address) const {
-	int balance = 0;
+double Blockchain::getBalanceOf(const std::string& address) const {
+	double balance = 0;
 	for(const auto& block : chain) {
 		for(const auto& tx : block.transactions)
 		{
