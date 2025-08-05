@@ -11,5 +11,5 @@ class Transaction{
 		Transaction(const std::string& fromAdr, const std::string& toAdr, double amnt);
 		void signTransaction(EVP_PKEY* privateKey);
 		bool isValid() const;
-		std::string getHash() const;
+		std::string calculateHash() const;
 };
