@@ -1,5 +1,5 @@
 #include "wallet.hpp"
-#include "crypto.hpp" // assuming you have functions like getPublicKeyString, sign, etc.
+#include "crypto.hpp"
 #include <openssl/pem.h>
 #include <fstream>
 #include <sstream>
@@ -75,3 +75,4 @@ Transaction Wallet::createTransaction(const std::string& to, int amount) {
     tx.signature = Crypto::sign(tx.toString(), keypair);
     return tx;
 }
+
