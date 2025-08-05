@@ -42,15 +42,16 @@ void Blockchain::minePendingTransaction(const std::string& minerAddress)
         	}
         	return;
     	}
+	Transaction rewardTx(SYSTEM_ADDRESS, minerAddress, miningReward);
+	pendingTransactions.push_back(rewardTx);
 	if (verboseLoggingEnabled) {
         	std::cout << "[DEBUG] Creating new block with pending transactions...\n";
     	}
-	Transaction rewardTx(SYSTEM_ADDRESS, minerAddress, miningReward);
-	pendingTransactions.push_back(rewardTx);
-
 	Block newBlock(chain.size(), chain.back().hash, pendingTransactions);
 	newBlock.mine(difficulty);
-
+	if (verboseLogging) {
+        	std::cout << "[DEBUG] New block mined with hash: " << block.getHash() << "\n";
+    	}
 	chain.push_back(newBlock);
 	pendingTransactions.clear();
 }
