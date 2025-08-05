@@ -31,12 +31,15 @@ std::string Block::calculateHash() const{
 
 void Block::mine(int difficulty)
 {
+	auto start = std::chrono::high_resolution_clock::now();
 	std::string prefix(difficulty, "0"); // "0000" if difficulty = 4
 	while(hash.substr(0, difficulty) != prefix)
 	{
 		nonce++;
 		hash = calculateHash();
 	}
+	auto end = std::chrono::high_resolution_clock::now();
+	miningDuration = std::chrono::duration<double>(end - start).count();
 	std::cout << "Block mined : " << hash << std::endl; 
 }
 
