@@ -12,7 +12,6 @@ Blockchain::Blockchain()
 	Block genesisBlock(0, "0", genesisTxs);
 	genesisBlock.mine(difficulty);
 	chain.push_back(genesisBlock);
-       	
 }
 
 void Blockchain::addTransaction(const Transaction& tx)
