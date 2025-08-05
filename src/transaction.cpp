@@ -34,7 +34,7 @@ bool Transaction::isValid() const {
 		return false;
 	}
 
-	EVP_PKEY* pubKey = Crypto::loadpublickey(from);
+	EVP_PKEY* pubKey = Crypto::getPublicKeyString(from);
 	if(!pubKey)
 	{
 		std::cerr << "Invalid public key" << std::endl;
