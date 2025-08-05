@@ -157,6 +157,14 @@ Blockchain Blockchain::deserialize(const std::string& data) {
     return bc;
 }
 
+bool Blockchain::isVerboseLoggingEnabled() const noexcept {
+    return isVerboseLoggingEnabled;
+}
+
+void Blockchain::enableVerboseLogging(bool enable) noexcept {
+    isVerboseLoggingEnabled = enable;
+}
+
 
 
 
