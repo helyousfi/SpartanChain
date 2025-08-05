@@ -14,6 +14,16 @@ Blockchain::Blockchain()
 	chain.push_back(genesisBlock);
 }
 
+void Blockchain::addTransaction(const Transaction& tx)
+{ 
+	if(tx.from != SYSTEM_ADDRESS && !tx.isValid()) // No verification for mining rewards
+	{
+		std::cerr << "Invalid transaction. Rejected. \n";
+		return;		
+	}
+	pendingTransactions.push_back(tx);
+}
+
 void Blockchain::addTransaction(Transaction&& tx)
 { 
 	if(tx.from != SYSTEM_ADDRESS && !tx.isValid()) // No verification for mining rewards
