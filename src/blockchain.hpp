@@ -9,13 +9,16 @@ class Blockchain final {
 private:
     static constexpr int DEFAULT_DIFFICULTY = 4;
     static constexpr int DEFAULT_REWARD = 5;
-
-    bool verboseLoggingEnabled{false};
+    
+    bool verboseLoggingEnabled{false}; // verbosity of debug messages
 
     alignas(64) std::vector<Block> chain;
     std::vector<Transaction> pendingTransactions;
     int difficulty;
     int miningReward;
+
+    const uint64_t MAX_SUPPLY = 10'000; // maximum supply
+    uint64_t totalCoinsIssued = 0;
 
     [[nodiscard]] bool isVerboseLoggingEnabled() const noexcept;
     void enableVerboseLogging(bool enable = true) noexcept;
