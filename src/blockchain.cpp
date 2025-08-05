@@ -75,6 +75,7 @@ bool Blockchain::isChainValid() const {
 		if(current.previousHash != previous.hash)
 		{
 			std::cerr << "Block " << i << " previous hash mismatch. \n";
+			return false;
 		}
 		for(const auto& tx : current.transactions)
 		{
