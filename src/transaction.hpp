@@ -5,7 +5,7 @@ class Transaction{
 		double amount;
 		std::string signature;
 		std::string timestamp;
-		std::string id; 
+		std::string hash; 
 
 	public:
 		Transaction(const std::string& fromAdr, const std::string& toAdr, double amnt);
