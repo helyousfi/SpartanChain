@@ -10,7 +10,7 @@ Wallet::Wallet() {
     if (!keypair) {
         throw std::runtime_error("Failed to generate keypair");
     }
-    address = Crypto::getPublicKeyString(keypair); // use hash(pubkey) in real apps
+    address = Crypto::getPublicKeyString(keypair);
 }
 
 Wallet::~Wallet() {
@@ -75,4 +75,5 @@ Transaction Wallet::createTransaction(const std::string& to, int amount) {
     tx.signature = Crypto::sign(tx.toString(), keypair);
     return tx;
 }
+
 
