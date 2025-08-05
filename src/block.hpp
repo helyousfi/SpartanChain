@@ -3,6 +3,7 @@ public:
 	int index;
 	std::string previousHash;
 	std::string timestamp;
+	std::time_t rawTimestamp; // for serialization, sorting ...
 	std::vector<Transaction> transactions;
 	int nonce;
 	std::string hash;
