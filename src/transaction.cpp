@@ -14,11 +14,7 @@ void Transaction::signTransaction(EVP_PKEY* privateKey)
 }
 std::string Transaction::calculateHash() const{
 	std::stringsteam ss;
-	ss << index << previousHash << timestamp << nonce;
-	for(const auto& tx:transactions)
-	{
-		ss << tx.from << tx.to << tx.signature;
-	}
+	ss << from << to << amount << signature << timestamp;
 	return Crypto::sha256(ss.str());
 }
 bool Transaction::isValid() const {
