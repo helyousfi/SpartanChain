@@ -4,7 +4,7 @@
 #include <nlohmann/json.hpp>
 using json = nlohmann::json;
 
-Blockchain::Blockchain(int difficulty = DEFAULT_DIFFICULTY, int miningReward = DEFAULT_REWARD) : 
+Blockchain::Blockchain(int difficulty, int miningReward) : 
 	difficulty(difficulty), miningReward(miningReward)
 {
 	Transaction genesisTx(SYSTEM_ADDRESS, NETWORK_ADDRESS, 0);
@@ -106,7 +106,7 @@ void Blockchain::printChain() const {
 	}
 }
 
-const Block& Blockchain::getLatestBlock() const {
+const Block& Blockchain::getLatestBlock() const noexcept {
 	return chain.back();
 }
 
