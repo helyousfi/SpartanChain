@@ -21,7 +21,8 @@ private:
 public:
     explicit Blockchain(int difficulty = DEFAULT_DIFFICULTY, int miningReward = DEFAULT_REWARD);
 
-    void addTransaction(Transaction&& tx);
+    void addTransaction(const Transaction& tx);
+    void addTransaction(Transaction&& tx); // rvalue overload, useful if callers are creating transactions temporarily
     void minePendingTransaction(std::string_view minerAddress);
 
     [[nodiscard]] bool isChainValid() const;
