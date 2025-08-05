@@ -30,7 +30,7 @@ public:
     [[nodiscard]] bool isChainValid() const;
     [[nodiscard]] double getBalanceOf(std::string_view address) const;
 
-    void printChain() const;
+    void printChain() const noexcept;
 
     [[nodiscard]] const Block& getLatestBlock() const noexcept;
     [[nodiscard]] size_t getChainSize() const noexcept { return chain.size(); }
@@ -44,5 +44,5 @@ public:
     Blockchain(Blockchain&&) = default;                      // Allow move constructor
     Blockchain& operator=(Blockchain&&) = default;           // Allow move assignment
 
-    void reset(); // Clear chain and start from genesis again
+    void reset() noexcept; // Clear chain and start from genesis again
 };
