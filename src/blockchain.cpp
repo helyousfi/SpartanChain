@@ -17,6 +17,10 @@ Blockchain::Blockchain(int difficulty, int miningReward) :
 
 void Blockchain::addTransaction(const Transaction& tx)
 { 
+	if (tx.amount <= 0) {
+	    std::cerr << "Transaction amount must be positive. Rejected.\n";
+	    return;
+	}
 	if(tx.from != SYSTEM_ADDRESS && !tx.isValid()) // No verification for mining rewards
 	{
 		std::cerr << "Invalid transaction. Rejected. \n";
