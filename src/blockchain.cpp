@@ -37,12 +37,12 @@ void Blockchain::addTransaction(Transaction&& tx)
 void Blockchain::minePendingTransaction(const std::string& minerAddress)
 {
 	if (pendingTransactions.empty()) {
-        	if (isVerboseLoggingEnabled) {
+        	if (verboseLoggingEnabled) {
             		std::cout << "[DEBUG] No pending transactions to mine.\n";
         	}
         	return;
     	}
-	if (isVerboseLoggingEnabled ) {
+	if (verboseLoggingEnabled) {
         	std::cout << "[DEBUG] Creating new block with pending transactions...\n";
     	}
 	Transaction rewardTx(SYSTEM_ADDRESS, minerAddress, miningReward);
@@ -167,11 +167,11 @@ Blockchain Blockchain::deserialize(const std::string& data) {
 }
 
 bool Blockchain::isVerboseLoggingEnabled() const noexcept {
-    return isVerboseLoggingEnabled;
+    return verboseLoggingEnabled;
 }
 
 void Blockchain::enableVerboseLogging(bool enable) noexcept {
-    isVerboseLoggingEnabled = enable;
+    verboseLoggingEnabled = enable;
 }
 
 
