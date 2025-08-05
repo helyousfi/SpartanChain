@@ -15,7 +15,6 @@ Block::Block(int idx, const std::string& prevHash, const std::vector<Transaction
 	std::stringstream ss;
 	ss << std::put_time(std::gmtime(&now_time_t), "%Y-%m-%d %H:%M:%S");
 	timestamp = ss.str();
-	hash = calculateHash();
 }
 
 
