@@ -40,8 +40,7 @@ bool Transaction::isValid() const {
 		std::cerr << "Invalid public key" << std::endl;
 		return false;
 	}
-	std::string data = from + to + std::to_string(amount);
-	bool result = Crypto::verify(data, signature, pubKey);
+	bool result = Crypto::verify(hash, signature, pubKey);
 	EVP_PKEY_free(pubKey);
 	return result;
 }
