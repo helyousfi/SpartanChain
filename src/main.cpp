@@ -7,8 +7,8 @@ int main() {
     Blockchain myChain(4, 50);
 
     // Create a wallet/address for Alice and Bob (just string here)
-    std::string alice = "AliceAddress";
-    std::string bob = "BobAddress";
+    std::string alice = "f2ca1bb6c7e907d06dafe4687e579fce9e5251ff453b64d6f6f7898d2f1f0d41";
+    std::string bob = "9b74c9897bac770ffc029102a200c5de3a4f5e6f8bde7e67a2f97d36b02f53d7";
 
     // Create some transactions
     Transaction tx1(alice, bob, 10);
