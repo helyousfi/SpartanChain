@@ -2,11 +2,9 @@
 #include "blockchain.hpp"
 #include "constants.hpp"
 
-Blockchain::Blockchain()
+Blockchain::Blockchain(int difficulty = DEFAULT_DIFFICULTY, int miningReward = DEFAULT_REWARD) : 
+	difficulty(difficulty), miningReward(miningReward)
 {
-	difficulty = 4;
-	miningReward = 5;
-
 	Transaction genesisTx(SYSTEM_ADDRESS, NETWORK_ADDRESS, 0);
 	std::vector<Transaction> genesisTxs = {genesisTx};
 	Block genesisBlock(0, "0", genesisTxs);
