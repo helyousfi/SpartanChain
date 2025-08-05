@@ -7,7 +7,7 @@ Blockchain::Blockchain()
 	difficulty = 4;
 	miningReward = 5;
 
-	Transaction genesisTx("SYSTEM", "NETWORK", 0);
+	Transaction genesisTx(SYSTEM_ADDRESS, "NETWORK", 0);
 	std::vector<Transaction> genesisTxs = {genesisTx};
 	Block genesisBlock(0, "0", genesisTxs);
 	genesisBlock.mine(difficulty);
@@ -27,7 +27,7 @@ void Blockchain::addTransaction(const Transaction& tx)
 
 void Blockchain::minePendingTransaction(const std::string& minerAddress)
 {
-	Transaction rewardTx("SYSTEM", minerAddress, miningReward);
+	Transaction rewardTx(SYSTEM_ADDRESS, minerAddress, miningReward);
 	pendingTransactions.push_back(rewardTx);
 
 	Block newBlock(chain.size(), chain.back().hash, pendingTransactions);
