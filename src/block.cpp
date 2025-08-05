@@ -24,14 +24,14 @@ std::string Block::calculateHash() const{
 	ss << index << previousHash << timestamp << nonce;
 	for(const auto& tx:transactions)
 	{
-		ss << tx.from << tx.to << tx.signature;
+		ss << tx.getHash();
 	}
 	return Crypto::sha256(ss.str());
 }
 
 void Block::mine(int difficulty)
 {
-	str::string prefix(difficulty, "0"); // "0000" if difficulty = 4
+	std::string prefix(difficulty, "0"); // "0000" if difficulty = 4
 	while(hash.substr(0, difficulty) != prefix)
 	{
 		nonce++;
