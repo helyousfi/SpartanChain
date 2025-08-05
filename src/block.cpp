@@ -40,4 +40,14 @@ void Block::mine(int difficulty)
 	std::cout << "Block mined : " << hash << std::endl; 
 }
 
+std::string Block::toString() const {
+	std::stringstream ss;
+	ss << "Block " << index << " [Hash: " << hash << "]\n"
+	   << "Prev: " << previousHash << "\n"
+	   << "Time: " << timestamp << "\n"
+	   << "Nonce: " << nonce << "\n"
+	   << "Transactions: " << transactions.size() << "\n";
+	return ss.str();
+}
+
 
