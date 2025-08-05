@@ -26,6 +26,10 @@ void Blockchain::addTransaction(const Transaction& tx)
 
 void Blockchain::addTransaction(Transaction&& tx)
 { 
+	if (tx.amount <= 0) {
+	    std::cerr << "Transaction amount must be positive. Rejected.\n";
+	    return;
+	}
 	if(tx.from != SYSTEM_ADDRESS && !tx.isValid()) // No verification for mining rewards
 	{
 		std::cerr << "Invalid transaction. Rejected. \n";
@@ -50,7 +54,7 @@ void Blockchain::minePendingTransaction(const std::string& minerAddress)
 	Block newBlock(chain.size(), chain.back().hash, pendingTransactions);
 	newBlock.mine(difficulty);
 	if (verboseLoggingEnabled) {
-        	std::cout << "[DEBUG] New block mined with hash: " << block.getHash() << "\n";
+        	std::cout << "[DEBUG] New block mined with hash: " << newBlock.getHash() << "\n";
     	}
 	chain.push_back(newBlock);
 	pendingTransactions.clear();
