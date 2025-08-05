@@ -11,4 +11,6 @@ public:
 	Block(int idx, std::string prevHash, std::vector<Transaction> trx);
 	std::string calculateHash() const;
 	void mine(int difficulty);
+
+	std::string Block::toString() const; // For debug purpose
 };
