@@ -17,8 +17,8 @@ private:
     int difficulty;
     int miningReward;
 
-    void enableVerboseLogging(bool enable = true);
-    bool isVerboseLoggingEnabled() const;
+    [[nodiscard]] bool isVerboseLoggingEnabled() const noexcept;
+    void enableVerboseLogging(bool enable = true) noexcept;
 
 public:
     explicit Blockchain(int difficulty = DEFAULT_DIFFICULTY, int miningReward = DEFAULT_REWARD);
@@ -36,7 +36,7 @@ public:
     [[nodiscard]] size_t getChainSize() const noexcept { return chain.size(); }
     [[nodiscard]] const std::vector<Block>& getChain() const noexcept { return chain; }
 
-    std::string serialize() const;
+    [[nodiscard]] std::string serialize() const;
     static Blockchain deserialize(const std::string& data);
 
     Blockchain(const Blockchain&) = delete;                  // Prevent copy constructor
