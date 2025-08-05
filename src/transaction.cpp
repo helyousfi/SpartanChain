@@ -3,8 +3,11 @@
 #include "crypto.hpp"
 #include <iostream>
 
-Transaction::Transaction(std::string fromAdr, std::string toAdr, int amnt) : 
-	from(std::move(fromAdr)), to(std::move(toAdr)), amount(amnt), signature("") {}
+Transaction::Transaction(std::string fromAdr, std::string toAdr, double amnt) : 
+	from(std::move(fromAdr)), to(std::move(toAdr)), amount(amnt), signature("") 
+{
+	
+}
 
 void Transaction::signTransaction(EVP_PKEY* privateKey)
 {
