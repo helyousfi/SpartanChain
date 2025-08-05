@@ -10,7 +10,7 @@ private:
 
 public:
     CLI() : blockchain(4, 50) /* example difficulty=4, reward=50 */ {
-        // Optionally initialize wallet here or load
+        // initialize wallet here or load
     }
 
     void run() {
@@ -47,7 +47,7 @@ public:
     void createWallet() {
         wallet = Wallet(); // generate new keypair and address
         std::cout << "New wallet created!\nYour address: " << wallet.getAddress() << std::endl;
-        // Optionally save wallet to file
+        // save wallet to file
     }
 
     void sendCoins() {
@@ -94,3 +94,4 @@ public:
             std::cout << "Blockchain is INVALID!\n";
     }
 };
+
