@@ -3,21 +3,29 @@
 #include "block.hpp"
 #include "transaction.hpp"
 #include <vector>
-#include <string> 
+#include <string_view>
 
-class Blockchain{
-	private:
-		std::vector<Block> chain;
-		int difficulty;
-		std::vector<Transaction> pendingTransactions;
-		int reward;
-		int miningReward;
+class Blockchain final {
+private:
+    std::vector<Block> chain;
+    std::vector<Transaction> pendingTransactions;
+    int difficulty;
+    int miningReward;
 
-	public:
-		Blockchain();
-		void addTransaction(const Transaction& tsx);
-		void minePendingTransaction(const std::string& minerAddress);
-		bool isChainValid() const;
-		int getBalanceOf(const std::string& address) const;
-		void printChain() const;
+public:
+    explicit Blockchain();
+
+    void addTransaction(const Transaction& tx);
+    void minePendingTransaction(std::string_view minerAddress);
+
+    [[nodiscard]] bool isChainValid() const;
+    [[nodiscard]] int getBalanceOf(std::string_view address) const;
+
+    void printChain() const;
+
+    // Rule of 5/Rule of 0 Modern Management
+    Blockchain(const Blockchain&) = delete;                  // Prevent copy constructor
+    Blockchain& operator=(const Blockchain&) = delete;       // Prevent copy assignment
+    Blockchain(Blockchain&&) = default;                      // Allow move constructor
+    Blockchain& operator=(Blockchain&&) = default;           // Allow move assignment
 };
