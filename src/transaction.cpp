@@ -6,7 +6,14 @@
 Transaction::Transaction(std::string fromAdr, std::string toAdr, double amnt) : 
 	from(std::move(fromAdr)), to(std::move(toAdr)), amount(amnt), signature("") 
 {
-	
+	auto now = std::chrono::system_clock::now();
+	auto now_time_t = std::chrono::system_clock::to_time_t(now);
+
+	std::stringstream ss;
+	ss << std::put_time(std::gmtime(&now_time_t), "%Y-%m-%d %H:%M:%S");
+
+	timestamp = ss.str();
+	hash = calculateHash();
 }
 
 void Transaction::signTransaction(EVP_PKEY* privateKey)
@@ -16,7 +23,7 @@ void Transaction::signTransaction(EVP_PKEY* privateKey)
 	signature = Crypto::sign(data, privateKey);
 }
 std::string Transaction::calculateHash() const{
-	std::stringsteam ss;
+	std::stringstream ss;
 	ss << from << to << amount << signature << timestamp;
 	return Crypto::sha256(ss.str());
 }
