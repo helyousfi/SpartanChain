@@ -40,7 +40,7 @@ void Block::mine(int difficulty)
 	}
 	auto end = std::chrono::high_resolution_clock::now();
 	miningDuration = std::chrono::duration<double>(end - start).count();
-	std::cout << "Block mined : " << hash << std::endl; 
+	std::cout << "Block mined : " << hash << " in " << miningDuration << " seconds." << std::endl; 
 }
 
 std::string Block::toString() const {
