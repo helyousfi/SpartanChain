@@ -16,7 +16,7 @@ Blockchain::Blockchain()
 
 void Blockchain::addTransaction(const Transaction& tx)
 { 
-	if(tx.from != SYSTEM_ADDRESS && !tx.isValid())
+	if(tx.from != SYSTEM_ADDRESS && !tx.isValid()) // No verification for mining rewards
 	{
 		std::cerr << "Invalid transaction. Rejected. \n";
 		return;		
