@@ -17,7 +17,6 @@ private:
     int difficulty;
     int miningReward;
 
-    const uint64_t MAX_SUPPLY = 10'000; // maximum supply
     uint64_t totalCoinsIssued = 0;
 
     [[nodiscard]] bool isVerboseLoggingEnabled() const noexcept;
