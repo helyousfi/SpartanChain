@@ -1,4 +1,5 @@
 #include "blockchain.hpp"
+#include <iostream>
 
 Blockchain::Blockchain()
 {
