@@ -89,7 +89,8 @@ void Blockchain::printChain() const {
 	       	std::cout << "Transactions : " << std::endl;
 		for(const auto& tx : block.transactions)
 		{
-			std::cout << tx.from << " -> " << tx.to << " : " << tx.amount << std::endl;
+			std::cout << "Transaction: " << tx.from << " -> " << tx.to
+          					     << " | Amount: " << tx.amount << std::endl;
 		}	
 		std::cout << "---------------\n"; 
 	}
