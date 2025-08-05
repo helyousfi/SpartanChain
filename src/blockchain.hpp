@@ -23,8 +23,14 @@ public:
 
     void printChain() const;
 
+    [[nodiscard]] const Block& getLatestBlock() const;
+    [[nodiscard]] size_t getChainSize() const { return chain.size(); }
+    [[nodiscard]] const std::vector<Block>& getChain() const { return chain; }
+
     Blockchain(const Blockchain&) = delete;                  // Prevent copy constructor
     Blockchain& operator=(const Blockchain&) = delete;       // Prevent copy assignment
     Blockchain(Blockchain&&) = default;                      // Allow move constructor
     Blockchain& operator=(Blockchain&&) = default;           // Allow move assignment
+
+    void reset(); // Clear chain and start from genesis again
 };
