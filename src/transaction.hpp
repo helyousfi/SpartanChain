@@ -1,3 +1,4 @@
+
 class Transaction{
 	private:
 		std::string from;

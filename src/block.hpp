@@ -1,3 +1,8 @@
+#include <string>
+#include <ctime>
+#include <vector>
+#include "transaction.hpp"
+
 class Block {
 private:
     int index;
