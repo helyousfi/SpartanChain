@@ -9,6 +9,7 @@ Blockchain::Blockchain(int difficulty, int miningReward) :
 {
 	Transaction genesisTx(SYSTEM_ADDRESS, NETWORK_ADDRESS, 0);
 	std::vector<Transaction> genesisTxs = {genesisTx};
+	totalCoinsIssued += 0; // no reward after genesis transaction
 	Block genesisBlock(0, "0", genesisTxs);
 	genesisBlock.mine(difficulty);
 	chain.push_back(genesisBlock);
@@ -46,8 +47,13 @@ void Blockchain::minePendingTransaction(const std::string& minerAddress)
         	}
         	return;
     	}
-	Transaction rewardTx(SYSTEM_ADDRESS, minerAddress, miningReward);
-	pendingTransactions.push_back(rewardTx);
+	if (totalCoinsIssued + miningReward <= MAX_SUPPLY) {
+        	Transaction rewardTx(SYSTEM_ADDRESS, minerAddress, miningReward);
+        	pendingTransactions.push_back(rewardTx);
+        	totalCoinsIssued += miningReward;
+    	} else {
+        	std::cout << "[INFO] Max coin supply reached. No mining reward issued.\n";
+    	}
 	if (verboseLoggingEnabled) {
         	std::cout << "[DEBUG] Creating new block with pending transactions...\n";
     	}
