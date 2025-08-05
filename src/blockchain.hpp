@@ -19,11 +19,10 @@ public:
     void minePendingTransaction(std::string_view minerAddress);
 
     [[nodiscard]] bool isChainValid() const;
-    [[nodiscard]] int getBalanceOf(std::string_view address) const;
+    [[nodiscard]] double getBalanceOf(std::string_view address) const;
 
     void printChain() const;
 
-    // Rule of 5/Rule of 0 Modern Management
     Blockchain(const Blockchain&) = delete;                  // Prevent copy constructor
     Blockchain& operator=(const Blockchain&) = delete;       // Prevent copy assignment
     Blockchain(Blockchain&&) = default;                      // Allow move constructor
