@@ -7,7 +7,7 @@ Blockchain::Blockchain()
 	difficulty = 4;
 	miningReward = 5;
 
-	Transaction genesisTx(SYSTEM_ADDRESS, "NETWORK", 0);
+	Transaction genesisTx(SYSTEM_ADDRESS, NETWORK_ADDRESS, 0);
 	std::vector<Transaction> genesisTxs = {genesisTx};
 	Block genesisBlock(0, "0", genesisTxs);
 	genesisBlock.mine(difficulty);
