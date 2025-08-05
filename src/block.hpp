@@ -10,7 +10,7 @@ private:
     double miningDuration;
 
 public:
-    Block(int idx, std::string prevHash, std::vector<Transaction> trx);
+    Block(int idx, const std::string& prevHash, const std::vector<Transaction>& trx);
     
     std::string calculateHash() const;
     void mine(int difficulty);
