@@ -10,20 +10,26 @@ private:
     double miningDuration;
 
 public:
-    Block(int idx, const std::string& prevHash, const std::vector<Transaction>& trx);
+    explicit Block(int idx, const std::string& prevHash, const std::vector<Transaction>& trx);
     
-    std::string calculateHash() const;
     void mine(int difficulty);
-    std::string toString() const;
-    bool isLinkedTo(const Block& previousBlock) const;
+    std::string toString() const noexcept;
+    [[nodiscard]] std::string calculateHash() const;
+    [[nodiscard]] bool isLinkedTo(const Block& previousBlock) const;
 
     // Safe getters, read-only access
-    int getIndex() const;
+    int getIndex() const noexcept;
+    int getNonce() const noexcept;
     const std::string& getPreviousHash() const;
-    const std::string& getHash() const;
-    const std::vector<Transaction>& getTransactions() const;
-    const std::string& getTimestamp() const;
-    std::time_t getRawTimestamp() const;
-    int getNonce() const;
-    double getMiningDuration() const;
+    const std::string& getHash() const noexcept;
+    const std::vector<Transaction>& getTransactions() const noexcept;
+    const std::string& getTimestamp() const noexcept;
+    std::time_t getRawTimestamp() const noexcept;
+    double getMiningDuration() const noexcept;
+
+    Block(const Block&) = delete;
+    Block& operator=(const Block&) = delete;
+    Block(Block&&) noexcept = default;
+    Block& operator=(Block&&) noexcept = default;
+
 };
