@@ -3,6 +3,7 @@
 #include <sstream>
 #include <chrono>
 #include <iomanip>
+#include <iostream>
 
 // constructor
 Block::Block(int idx, const std::string& prevHash, const std::vector<Transaction>& trx) : 
@@ -57,4 +58,12 @@ bool Block::isLinkedTo(const Block& previousBlock) const {
     return previousHash == previousBlock.hash && index == previousBlock.index + 1;
 }
 
-
+// === Getters ===
+int Block::getIndex() const { return index; }
+const std::string& Block::getPreviousHash() const { return previousHash; }
+const std::string& Block::getHash() const { return hash; }
+const std::vector<Transaction>& Block::getTransactions() const { return transactions;}
+const std::string& Block::getTimestamp() const { return timestamp;}
+std::time_t Block::getRawTimestamp() const { return rawTimestamp; }
+int Block::getNonce() const { return nonce; }
+double Block::getMiningDuration() const { return miningDuration; }
