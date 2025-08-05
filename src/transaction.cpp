@@ -12,7 +12,15 @@ void Transaction::signTransaction(EVP_PKEY* privateKey)
 	std::string data = from + to + std::to_string(amount);
 	signature = Crypto::sign(data, privateKey);
 }
-
+std::string Transaction::calculateHash() const{
+	std::stringsteam ss;
+	ss << index << previousHash << timestamp << nonce;
+	for(const auto& tx:transactions)
+	{
+		ss << tx.from << tx.to << tx.signature;
+	}
+	return Crypto::sha256(ss.str());
+}
 bool Transaction::isValid() const {
 	if(from == SYSTEM_ADDRESS) return true;
 	if(signature.empty())
