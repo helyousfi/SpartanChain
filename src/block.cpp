@@ -5,7 +5,7 @@
 #include <iomanip>
 
 // constructor
-Block::Block(int idx, std::string prevHash, std::vector<Transaction> trx) : 
+Block::Block(int idx, const std::string& prevHash, const std::vector<Transaction>& trx) : 
 	index(idx), previousHash(prevHash), transactions(trx), nonce(0)
 {
 	auto now = std::chrono::system_clock::now();
