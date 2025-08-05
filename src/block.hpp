@@ -7,6 +7,7 @@ public:
 	std::vector<Transaction> transactions;
 	int nonce;
 	std::string hash;
+	double miningDuration; // duration in seconds
 	
 	Block(int idx, std::string prevHash, std::vector<Transaction> trx);
 	std::string calculateHash() const;
