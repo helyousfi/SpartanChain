@@ -32,11 +32,13 @@ git clone https://github.com/yourusername/spartanchain.git
 cd spartanchain
 mkdir build && cd build
 cmake ..
-make```
+make
+```
 
 ## Usage
  ```bash
-./spartanchain```
+./spartanchain
+```
 
 CLI Commands:
 - create_wallet - Generate a new wallet
