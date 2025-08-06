@@ -1,8 +1,7 @@
 #include "cli.hpp"
 #include <iostream>
 
-CLI::CLI() : blockchain(4, 50) /* difficulty=4, mining reward=50 */ {
-    // You can initialize or load the wallet here if needed
+CLI::CLI() : blockchain(4, 50) {
 }
 
 void CLI::run() {
