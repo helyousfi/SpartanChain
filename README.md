@@ -1,23 +1,23 @@
 sudo apt install libssl-dev
 
-# 🛡️ SpartanChain
+# SpartanChain
 
 SpartanChain is a lightweight, secure cryptocurrency and blockchain implementation written in modern C++. It includes a cryptographic wallet system, transaction management, and a simple CLI for interacting with the chain.
 
 ---
 
-## 🚀 Features
+## Features
 
-- 🔐 Wallet generation using OpenSSL (RSA or EC keys)
-- 📬 Transaction creation and signing
-- ⛓️ Block mining with basic proof-of-work
-- 💬 Command-line interface (CLI)
-- 🔎 Blockchain explorer (basic output)
-- 📁 Save/load wallets and blockchain data
+- Wallet generation using OpenSSL (RSA or EC keys)
+- Transaction creation and signing
+- Block mining with basic proof-of-work
+- Command-line interface (CLI)
+- Blockchain explorer (basic output)
+- Save/load wallets and blockchain data
 
 ---
 
-## 🧰 Requirements
+## Requirements
 
 - C++17 or later
 - [OpenSSL](https://www.openssl.org/) (for cryptography)
@@ -25,16 +25,16 @@ SpartanChain is a lightweight, secure cryptocurrency and blockchain implementati
 
 ---
 
-## 🛠️ Build Instructions
+## Build Instructions
 
 ```bash
 git clone https://github.com/yourusername/spartanchain.git
 cd spartanchain
 mkdir build && cd build
 cmake ..
-make
+make```
 
-## 🧪 Usage
+## Usage
  ```bash
 ./spartanchain```
 
