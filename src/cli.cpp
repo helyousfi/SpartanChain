@@ -1,7 +1,8 @@
 #include "cli.hpp"
 #include <iostream>
+#include "constants.hpp"
 
-CLI::CLI() : blockchain(4, 50) {
+CLI::CLI() : blockchain(6, 50) {
 }
 
 void CLI::run() {
@@ -36,9 +37,9 @@ void CLI::help() {
 }
 
 void CLI::createWallet() {
-    wallet = Wallet(); // generates new keypair and address
-    std::cout << "New wallet created!\nYour address: " << wallet.getAddress() << std::endl;
-    // optionally save wallet to file here
+	wallet = Wallet(); // generates new keypair and address
+    	std::cout << "New wallet created!\nYour address: " << wallet.getAddress() << std::endl;
+   	blockchain.addTransaction(Transaction(SYSTEM_ADDRESS, wallet.getAddress(), 100.00));
 }
 
 void CLI::sendCoins() {

@@ -15,6 +15,7 @@ Wallet::Wallet() {
         throw std::runtime_error("Failed to generate keypair");
     }
     address = Crypto::getPublicKeyString(keypair);
+
 }
 
 Wallet::~Wallet() {

@@ -2,6 +2,7 @@
 
 #include "block.hpp"
 #include "transaction.hpp"
+
 #include <vector>
 #include <string_view>
 
@@ -10,10 +11,9 @@ private:
     static constexpr int DEFAULT_DIFFICULTY = 4;
     static constexpr int DEFAULT_REWARD = 5;
     
-    bool verboseLoggingEnabled{false}; // verbosity of debug messages
-
     alignas(64) std::vector<Block> chain;
     std::vector<Transaction> pendingTransactions;
+
     int difficulty;
     int miningReward;
 
@@ -21,6 +21,8 @@ private:
 
     [[nodiscard]] bool isVerboseLoggingEnabled() const noexcept;
     void enableVerboseLogging(bool enable = true) noexcept;
+
+    bool verboseLoggingEnabled{true}; // verbosity of debug messages
 
 public:
     explicit Blockchain(int difficulty = DEFAULT_DIFFICULTY, int miningReward = DEFAULT_REWARD);

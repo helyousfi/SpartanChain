@@ -14,18 +14,22 @@ Blockchain::Blockchain(int difficulty, int miningReward) :
 	totalCoinsIssued += 0; // no reward after genesis transaction
 	Block genesisBlock(0, "0", genesisTxs);
 	genesisBlock.mine(difficulty);
+	if(verboseLoggingEnabled)
+	{
+		std::cout << "[DEBUG] Genesis Block Mined!" << std::endl;
+	}
 	chain.push_back(std::move(genesisBlock));
 }
 
 void Blockchain::addTransaction(const Transaction& tx)
 { 
 	if (tx.getAmount() <= 0) {
-	    std::cerr << "Transaction amount must be positive. Rejected.\n";
+	    std::cerr << "[ERROR] Transaction amount must be positive. Rejected.\n";
 	    return;
 	}
 	if(tx.getFrom() != SYSTEM_ADDRESS && !tx.isValid()) // No verification for mining rewards
 	{
-		std::cerr << "Invalid transaction. Rejected. \n";
+		std::cerr << "[ERROR] Invalid transaction. Rejected. \n";
 		return;		
 	}
 	pendingTransactions.push_back(std::move(tx));
@@ -34,12 +38,12 @@ void Blockchain::addTransaction(const Transaction& tx)
 void Blockchain::addTransaction(Transaction&& tx)
 { 
 	if (tx.getAmount() <= 0) {
-	    std::cerr << "Transaction amount must be positive. Rejected.\n";
+	    std::cerr << "[DEBUG] Transaction amount must be positive. Rejected.\n";
 	    return;
 	}
 	if(tx.getFrom() != SYSTEM_ADDRESS && !tx.isValid()) // No verification for mining rewards
 	{
-		std::cerr << "Invalid transaction. Rejected. \n";
+		std::cerr << "[ERROR] Invalid transaction. Rejected. \n";
 		return;		
 	}
 	pendingTransactions.push_back(std::move(tx));

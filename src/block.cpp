@@ -5,11 +5,11 @@
 #include <iomanip>
 #include <iostream>
 
-// constructor
+// Block Constructor
 Block::Block(int idx, const std::string& prevHash, const std::vector<Transaction>& trx) : 
 	index(idx), previousHash(prevHash), transactions(trx), nonce(0)
 {
-	// Calculate the timestamp
+	// Calculate the timestamp (when the block was added to the blockchain)
 	auto now = std::chrono::system_clock::now();
 	auto now_time_t = std::chrono::system_clock::to_time_t(now);
 	std::stringstream ss;
@@ -18,6 +18,7 @@ Block::Block(int idx, const std::string& prevHash, const std::vector<Transaction
 }
 
 
+// Calculate the hash from index, previousHash and timestamp
 std::string Block::calculateHash() const{
 	std::stringstream ss;
 	ss << index << previousHash << timestamp << nonce;
@@ -28,6 +29,7 @@ std::string Block::calculateHash() const{
 	return Crypto::sha256(ss.str());
 }
 
+// mining, finding the nonce until hash starts with difficulty "0"
 void Block::mine(int difficulty)
 {
 	auto start = std::chrono::high_resolution_clock::now();
@@ -36,6 +38,8 @@ void Block::mine(int difficulty)
 	{
 		nonce++;
 		hash = calculateHash();
+		if(nonce % 1000000 == 0)
+			std::cout << "[DEBUG_BLOCK_" + hash + "] Mining... nonce : " << nonce << std::endl;
 	}
 	auto end = std::chrono::high_resolution_clock::now();
 	miningDuration = std::chrono::duration<double>(end - start).count();

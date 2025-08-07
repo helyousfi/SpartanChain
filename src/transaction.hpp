@@ -7,16 +7,15 @@
 #include "transaction.hpp"
 
 class Transaction{
-	public:
+	private:
 		std::string from;
 		std::string to;
 		double amount;
 		std::string signature;
-		std::string timestamp;
+		std::string timestamp; // time when transaction added
 		std::string hash; 
 
-	// public:
-		// TODO overload constructor
+	public:
 		Transaction(std::string_view fromAdr, std::string_view toAdr, double amnt);
 		void signTransaction(EVP_PKEY* privateKey);
 		bool isValid() const;

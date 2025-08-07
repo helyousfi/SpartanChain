@@ -5,7 +5,6 @@
 #include <string_view>
 #include <chrono>
 
-// TODO : Overload this constructor with string!
 Transaction::Transaction(std::string_view fromAdr, std::string_view toAdr, double amnt) : 
 	from(std::move(fromAdr)), to(std::move(toAdr)), amount(amnt), signature("") 
 {
@@ -50,6 +49,6 @@ bool Transaction::isValid() const {
 std::string Transaction::toString() const
 {
         std::stringstream ss;
-	ss << from << to << amount;
+	ss << "From "<< from << " to " << to << " : " << amount << std::endl;
 	return ss.str();
 }

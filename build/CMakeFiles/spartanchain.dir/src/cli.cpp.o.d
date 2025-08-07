@@ -194,4 +194,5 @@ CMakeFiles/spartanchain.dir/src/cli.cpp.o: \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
  /usr/include/c++/13/bits/istream.tcc \
  /home/vboxuser/Documents/SpartanChain/src/wallet.hpp \
- /usr/include/openssl/err.h /usr/include/openssl/lhash.h
+ /usr/include/openssl/err.h /usr/include/openssl/lhash.h \
+ /home/vboxuser/Documents/SpartanChain/src/constants.hpp
