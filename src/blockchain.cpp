@@ -46,6 +46,8 @@ void Blockchain::addTransaction(Transaction&& tx)
 		std::cerr << "[ERROR] Invalid transaction. Rejected. \n";
 		return;		
 	}
+	// Verify recipient address
+	auto toAddr = tx.getTo();
 	pendingTransactions.push_back(std::move(tx));
 }
 

@@ -10,11 +10,11 @@
 #include <stdexcept>
 
 Wallet::Wallet() {
-    keypair = Crypto::generateKey();
+    keypair = Crypto::generateKey(); // The private key
     if (!keypair) {
         throw std::runtime_error("Failed to generate keypair");
     }
-    address = Crypto::getPublicKeyString(keypair);
+    address = Crypto::getPublicKeyString(keypair); // Public key
 
 }
 
@@ -79,7 +79,7 @@ EVP_PKEY* Wallet::getPrivateKey() const
 
 Transaction Wallet::createTransaction(const std::string& to, int amount) {
     Transaction tx(this->address, to, amount);
-    tx.signature = Crypto::sign(tx.toString(), keypair);
+    tx.signTransaction(keypair);
     return tx;
 }
 

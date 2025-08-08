@@ -34,12 +34,13 @@ void Block::mine(int difficulty)
 {
 	auto start = std::chrono::high_resolution_clock::now();
 	std::string prefix(difficulty, '0'); // "0000" if difficulty = 4
+	std::cout << "Mining ";
 	while(hash.substr(0, difficulty) != prefix)
 	{
 		nonce++;
 		hash = calculateHash();
-		if(nonce % 1000000 == 0)
-			std::cout << "[DEBUG_BLOCK_" + hash + "] Mining... nonce : " << nonce << std::endl;
+		if(nonce % 500000 == 0)
+			std::cout << ".";
 	}
 	auto end = std::chrono::high_resolution_clock::now();
 	miningDuration = std::chrono::duration<double>(end - start).count();
