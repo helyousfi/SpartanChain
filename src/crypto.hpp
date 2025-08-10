@@ -5,6 +5,7 @@
 
 namespace Crypto {
 	std::string sha256(const  std::string& input);
+	std::string HEX(unsigned char hash[]);
 	EVP_PKEY* generateKey();
 	EVP_PKEY* getPublicKeyFromString(const std::string& pubKeyStr);
 	std::string getPublicKeyString(EVP_PKEY* key);

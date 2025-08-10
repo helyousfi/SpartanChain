@@ -46,7 +46,7 @@ bool Transaction::isValid() const {
 	EVP_PKEY_free(pubKey);
 	return result;
 }
-std::string Transaction::toString() const
+std::string Transaction::toString() const noexcept
 {
         std::stringstream ss;
 	ss << "From "<< from << " to " << to << " : " << amount << std::endl;

@@ -21,12 +21,12 @@ public:
     void mine(int difficulty);
     std::string toString() const noexcept;
     [[nodiscard]] std::string calculateHash() const;
-    [[nodiscard]] bool isLinkedTo(const Block& previousBlock) const;
+    [[nodiscard]] bool isLinkedTo(const Block& previousBlock) const noexcept;
 
     // Safe getters, read-only access
     int getIndex() const noexcept;
     int getNonce() const noexcept;
-    const std::string& getPreviousHash() const;
+    const std::string& getPreviousHash() const noexcept;
     const std::string& getHash() const noexcept;
     const std::vector<Transaction>& getTransactions() const noexcept;
     const std::string& getTimestamp() const noexcept;

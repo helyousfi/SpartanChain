@@ -34,13 +34,10 @@ void Block::mine(int difficulty)
 {
 	auto start = std::chrono::high_resolution_clock::now();
 	std::string prefix(difficulty, '0'); // "0000" if difficulty = 4
-	std::cout << "Mining ";
 	while(hash.substr(0, difficulty) != prefix)
 	{
 		nonce++;
 		hash = calculateHash();
-		if(nonce % 500000 == 0)
-			std::cout << ".";
 	}
 	auto end = std::chrono::high_resolution_clock::now();
 	miningDuration = std::chrono::duration<double>(end - start).count();
@@ -57,13 +54,13 @@ std::string Block::toString() const noexcept {
 	return ss.str();
 }
 
-bool Block::isLinkedTo(const Block& previousBlock) const {
+bool Block::isLinkedTo(const Block& previousBlock) const noexcept{
     return previousHash == previousBlock.hash && index == previousBlock.index + 1;
 }
 
 // === Getters ===
 int Block::getIndex() const noexcept { return index; }
-const std::string& Block::getPreviousHash() const { return previousHash; }
+const std::string& Block::getPreviousHash() const noexcept { return previousHash; }
 const std::string& Block::getHash() const noexcept { return hash; }
 const std::vector<Transaction>& Block::getTransactions() const noexcept { return transactions;}
 const std::string& Block::getTimestamp() const noexcept { return timestamp;}

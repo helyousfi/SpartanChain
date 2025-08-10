@@ -1,6 +1,7 @@
 #pragma once
 
 #include "block.hpp"
+#pragma once
 #include "transaction.hpp"
 
 #include <vector>
@@ -20,12 +21,13 @@ private:
     uint64_t totalCoinsIssued = 0;
 
     [[nodiscard]] bool isVerboseLoggingEnabled() const noexcept;
-    void enableVerboseLogging(bool enable = true) noexcept;
-
+    
     bool verboseLoggingEnabled{true}; // verbosity of debug messages
 
 public:
     explicit Blockchain(int difficulty = DEFAULT_DIFFICULTY, int miningReward = DEFAULT_REWARD);
+
+    void enableVerboseLogging(bool enable = true) noexcept;
 
     void addTransaction(const Transaction& tx);
     void addTransaction(Transaction&& tx); // rvalue overload, useful if callers are creating transactions temporarily

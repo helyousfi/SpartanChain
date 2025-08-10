@@ -16,18 +16,18 @@ class Transaction{
 		std::string hash; 
 
 	public:
-		Transaction(std::string_view fromAdr, std::string_view toAdr, double amnt);
+		explicit Transaction(std::string_view fromAdr, std::string_view toAdr, double amnt);
 		void signTransaction(EVP_PKEY* privateKey);
-		bool isValid() const;
-		std::string calculateHash() const;
+		[[nodiscard]] bool isValid() const;
+		[[nodiscard]] std::string calculateHash() const;
 
 		// getters 
-		std::string getFrom() const {return from;};
-		std::string getTo() const {return to; };
-		double getAmount() const {return amount; };
-		std::string getSignature() const {return signature; };
-	       	std::string getTimeStamp() const {return timestamp; };
-		std::string getHash() const {return hash;}	
+		[[nodiscard]] std::string getFrom() const noexcept {return from;};
+		[[nodiscard]] std::string getTo() const noexcept {return to; };
+		[[nodiscard]] double getAmount() const noexcept {return amount; };
+		[[nodiscard]] std::string getSignature() const noexcept {return signature; };
+	       	[[nodiscard]] std::string getTimeStamp() const noexcept {return timestamp; };
+		[[nodiscard]] std::string getHash() const noexcept {return hash;}	
 		
-		std::string toString() const;
+		[[nodiscard]] std::string toString() const noexcept;
 };
