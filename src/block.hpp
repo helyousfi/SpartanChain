@@ -4,6 +4,14 @@
 #include <vector>
 #include "transaction.hpp"
 
+/**
+ * @class BLock
+ * @brief Represents a single block in the blockchain.
+ * A Block contains a list of transactions, a unique index,
+ * the hash of the previous block, a timestamp, and a nonce used
+ * during mining. It also stores its own hash and the time taken
+ * to mine it.
+ */
 class Block {
 private:
     int index;
