@@ -2,7 +2,7 @@
 #include <iostream>
 #include "constants.hpp"
 
-CLI::CLI() : blockchain(6, 50) {
+CLI::CLI() : blockchain() {
 }
 
 void CLI::run() {
@@ -39,7 +39,7 @@ void CLI::help() {
 void CLI::createWallet() {
 	wallet = Wallet(); // generates new keypair and address
     	std::cout << "New wallet created!\nYour address: " << wallet.getAddress() << std::endl;
-   	blockchain.addTransaction(Transaction(SYSTEM_ADDRESS, wallet.getAddress(), 100.00));
+   	blockchain.addTransaction(Transaction(SYSTEM_ADDRESS, wallet.getAddress(), 0.0));
 }
 
 void CLI::sendCoins() {
@@ -61,7 +61,6 @@ void CLI::sendCoins() {
     }
 
     auto tx = wallet.createTransaction(to, amount);
-    tx.signTransaction(wallet.getPrivateKey());  // You need to implement getPrivateKey() in Wallet
     blockchain.addTransaction(std::move(tx));
     std::cout << "Transaction added to pending transactions.\n";
 }

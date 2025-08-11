@@ -89,34 +89,37 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;transaction.hpp&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="foldopen" id="foldopen00009" data-start="{" data-end="};">
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="classTransaction.html">    9</a></span><span class="keyword">class </span><a class="code hl_class" href="classTransaction.html">Transaction</a>{</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        std::string from;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        std::string to;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="keywordtype">double</span> amount;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        std::string signature;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        std::string timestamp; <span class="comment">// time when transaction added</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        std::string hash; </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keyword">explicit</span> <a class="code hl_class" href="classTransaction.html">Transaction</a>(std::string_view fromAdr, std::string_view toAdr, <span class="keywordtype">double</span> amnt);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordtype">void</span> signTransaction(EVP_PKEY* privateKey);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        [[nodiscard]] <span class="keywordtype">bool</span> isValid() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        [[nodiscard]] std::string calculateHash() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="comment">// getters </span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        [[nodiscard]] std::string getFrom() <span class="keyword">const</span> <span class="keyword">noexcept</span> {<span class="keywordflow">return</span> from;};</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        [[nodiscard]] std::string getTo() <span class="keyword">const</span> <span class="keyword">noexcept</span> {<span class="keywordflow">return</span> to; };</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        [[nodiscard]] <span class="keywordtype">double</span> getAmount() <span class="keyword">const</span> <span class="keyword">noexcept</span> {<span class="keywordflow">return</span> amount; };</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        [[nodiscard]] std::string getSignature() <span class="keyword">const</span> <span class="keyword">noexcept</span> {<span class="keywordflow">return</span> signature; };</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            [[nodiscard]] std::string getTimeStamp() <span class="keyword">const</span> <span class="keyword">noexcept</span> {<span class="keywordflow">return</span> timestamp; };</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        [[nodiscard]] std::string getHash() <span class="keyword">const</span> <span class="keyword">noexcept</span> {<span class="keywordflow">return</span> hash;}   </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        [[nodiscard]] std::string toString() <span class="keyword">const</span> <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>};</div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classTransaction.html">   27</a></span><span class="keyword">class </span><a class="code hl_class" href="classTransaction.html">Transaction</a>{</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        std::string from;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        std::string to;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordtype">double</span> amount;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        std::string signature;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        std::string timestamp; <span class="comment">// time when transaction added</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        std::string hash; </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keyword">explicit</span> <a class="code hl_class" href="classTransaction.html">Transaction</a>(std::string_view fromAdr, std::string_view toAdr, <span class="keywordtype">double</span> amnt);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classTransaction.html#a749f98a5ea3cf4c4cfd1b5610a6161eb">signTransaction</a>(EVP_PKEY* privateKey);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        [[nodiscard]] <span class="keywordtype">bool</span> <a class="code hl_function" href="classTransaction.html#aaa106158ade1360319b41cfe23fd4aea">isValid</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        [[nodiscard]] std::string <a class="code hl_function" href="classTransaction.html#ac9e8831c4986fab006d5f57a85e45d95">calculateHash</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="comment">// getters </span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        [[nodiscard]] std::string getFrom() <span class="keyword">const</span> <span class="keyword">noexcept</span> {<span class="keywordflow">return</span> from;};</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        [[nodiscard]] std::string getTo() <span class="keyword">const</span> <span class="keyword">noexcept</span> {<span class="keywordflow">return</span> to; };</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        [[nodiscard]] <span class="keywordtype">double</span> getAmount() <span class="keyword">const</span> <span class="keyword">noexcept</span> {<span class="keywordflow">return</span> amount; };</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        [[nodiscard]] std::string getSignature() <span class="keyword">const</span> <span class="keyword">noexcept</span> {<span class="keywordflow">return</span> signature; };</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        [[nodiscard]] std::string getTimeStamp() <span class="keyword">const</span> <span class="keyword">noexcept</span> {<span class="keywordflow">return</span> timestamp; };</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        [[nodiscard]] std::string getHash() <span class="keyword">const</span> <span class="keyword">noexcept</span> {<span class="keywordflow">return</span> hash;}   </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        [[nodiscard]] std::string toString() <span class="keyword">const</span> <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>};</div>
 </div>
-<div class="ttc" id="aclassTransaction_html"><div class="ttname"><a href="classTransaction.html">Transaction</a></div><div class="ttdef"><b>Definition</b> transaction.hpp:9</div></div>
+<div class="ttc" id="aclassTransaction_html"><div class="ttname"><a href="classTransaction.html">Transaction</a></div><div class="ttdoc">Represents a monetary transfer between two blockchain addresses.</div><div class="ttdef"><b>Definition</b> transaction.hpp:27</div></div>
+<div class="ttc" id="aclassTransaction_html_a749f98a5ea3cf4c4cfd1b5610a6161eb"><div class="ttname"><a href="classTransaction.html#a749f98a5ea3cf4c4cfd1b5610a6161eb">Transaction::signTransaction</a></div><div class="ttdeci">void signTransaction(EVP_PKEY *privateKey)</div><div class="ttdoc">Signs the transaction using the sender's private key.</div><div class="ttdef"><b>Definition</b> transaction.cpp:20</div></div>
+<div class="ttc" id="aclassTransaction_html_aaa106158ade1360319b41cfe23fd4aea"><div class="ttname"><a href="classTransaction.html#aaa106158ade1360319b41cfe23fd4aea">Transaction::isValid</a></div><div class="ttdeci">bool isValid() const</div><div class="ttdoc">Checks if the transaction is valid.</div><div class="ttdef"><b>Definition</b> transaction.cpp:29</div></div>
+<div class="ttc" id="aclassTransaction_html_ac9e8831c4986fab006d5f57a85e45d95"><div class="ttname"><a href="classTransaction.html#ac9e8831c4986fab006d5f57a85e45d95">Transaction::calculateHash</a></div><div class="ttdeci">std::string calculateHash() const</div><div class="ttdoc">Calculates the SHA-256 hash of the transaction's contents.</div><div class="ttdef"><b>Definition</b> transaction.cpp:24</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

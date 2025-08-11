@@ -77,23 +77,35 @@ $(function() {
   <div class="headertitle"><div class="title">Wallet Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents a blockchain wallet containing a cryptographic keypair and address.  
+ <a href="classWallet.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="wallet_8hpp_source.html">wallet.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af7555f45b184eece127bc8b8799a2049" id="r_af7555f45b184eece127bc8b8799a2049"><td class="memItemLeft" align="right" valign="top"><a id="af7555f45b184eece127bc8b8799a2049" name="af7555f45b184eece127bc8b8799a2049"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>save</b> (const std::string &amp;path) const</td></tr>
+<tr class="memitem:ad9be9e49244b78db9099fcaeccd1af04" id="r_ad9be9e49244b78db9099fcaeccd1af04"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWallet.html#ad9be9e49244b78db9099fcaeccd1af04">Wallet</a> ()</td></tr>
+<tr class="memdesc:ad9be9e49244b78db9099fcaeccd1af04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new wallet with a freshly generated keypair.  <br /></td></tr>
+<tr class="separator:ad9be9e49244b78db9099fcaeccd1af04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a443dc95f50e4a9d8e6d5282e13fedcde" id="r_a443dc95f50e4a9d8e6d5282e13fedcde"><td class="memItemLeft" align="right" valign="top"><a id="a443dc95f50e4a9d8e6d5282e13fedcde" name="a443dc95f50e4a9d8e6d5282e13fedcde"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~Wallet</b> ()</td></tr>
+<tr class="memdesc:a443dc95f50e4a9d8e6d5282e13fedcde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the wallet and securely frees the keypair. <br /></td></tr>
+<tr class="separator:a443dc95f50e4a9d8e6d5282e13fedcde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7555f45b184eece127bc8b8799a2049" id="r_af7555f45b184eece127bc8b8799a2049"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWallet.html#af7555f45b184eece127bc8b8799a2049">save</a> (const std::string &amp;path) const</td></tr>
+<tr class="memdesc:af7555f45b184eece127bc8b8799a2049"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the wallet's private key to a file.  <br /></td></tr>
 <tr class="separator:af7555f45b184eece127bc8b8799a2049"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a456185bce29a187cc4fd7eb5cfcad1c8" id="r_a456185bce29a187cc4fd7eb5cfcad1c8"><td class="memItemLeft" align="right" valign="top"><a id="a456185bce29a187cc4fd7eb5cfcad1c8" name="a456185bce29a187cc4fd7eb5cfcad1c8"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getAddress</b> () const</td></tr>
+<tr class="memitem:a456185bce29a187cc4fd7eb5cfcad1c8" id="r_a456185bce29a187cc4fd7eb5cfcad1c8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWallet.html#a456185bce29a187cc4fd7eb5cfcad1c8">getAddress</a> () const</td></tr>
+<tr class="memdesc:a456185bce29a187cc4fd7eb5cfcad1c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the wallet's blockchain address.  <br /></td></tr>
 <tr class="separator:a456185bce29a187cc4fd7eb5cfcad1c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49e94aa9a8324dddeb8c8677d7992c0e" id="r_a49e94aa9a8324dddeb8c8677d7992c0e"><td class="memItemLeft" align="right" valign="top"><a id="a49e94aa9a8324dddeb8c8677d7992c0e" name="a49e94aa9a8324dddeb8c8677d7992c0e"></a>
-<a class="el" href="classTransaction.html">Transaction</a>&#160;</td><td class="memItemRight" valign="bottom"><b>createTransaction</b> (const std::string &amp;to, int amount)</td></tr>
+<tr class="memitem:a49e94aa9a8324dddeb8c8677d7992c0e" id="r_a49e94aa9a8324dddeb8c8677d7992c0e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTransaction.html">Transaction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWallet.html#a49e94aa9a8324dddeb8c8677d7992c0e">createTransaction</a> (const std::string &amp;to, int amount)</td></tr>
+<tr class="memdesc:a49e94aa9a8324dddeb8c8677d7992c0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and signs a transaction from this wallet.  <br /></td></tr>
 <tr class="separator:a49e94aa9a8324dddeb8c8677d7992c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabfcc645310b64a19884efd8b186e58b" id="r_aabfcc645310b64a19884efd8b186e58b"><td class="memItemLeft" align="right" valign="top"><a id="aabfcc645310b64a19884efd8b186e58b" name="aabfcc645310b64a19884efd8b186e58b"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getPublicKeyString</b> () const</td></tr>
+<tr class="memitem:aabfcc645310b64a19884efd8b186e58b" id="r_aabfcc645310b64a19884efd8b186e58b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWallet.html#aabfcc645310b64a19884efd8b186e58b">getPublicKeyString</a> () const</td></tr>
+<tr class="memdesc:aabfcc645310b64a19884efd8b186e58b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the public key as a string.  <br /></td></tr>
 <tr class="separator:aabfcc645310b64a19884efd8b186e58b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a394f7fc75f0f370b43d6663e3184a9bc" id="r_a394f7fc75f0f370b43d6663e3184a9bc"><td class="memItemLeft" align="right" valign="top"><a id="a394f7fc75f0f370b43d6663e3184a9bc" name="a394f7fc75f0f370b43d6663e3184a9bc"></a>
-EVP_PKEY *&#160;</td><td class="memItemRight" valign="bottom"><b>getPrivateKey</b> () const</td></tr>
+<tr class="memitem:a394f7fc75f0f370b43d6663e3184a9bc" id="r_a394f7fc75f0f370b43d6663e3184a9bc"><td class="memItemLeft" align="right" valign="top">EVP_PKEY *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWallet.html#a394f7fc75f0f370b43d6663e3184a9bc">getPrivateKey</a> () const</td></tr>
+<tr class="memdesc:a394f7fc75f0f370b43d6663e3184a9bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to the wallet's private key.  <br /></td></tr>
 <tr class="separator:a394f7fc75f0f370b43d6663e3184a9bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ef9683a54db5b31a9018de74d80400a" id="r_a4ef9683a54db5b31a9018de74d80400a"><td class="memItemLeft" align="right" valign="top"><a id="a4ef9683a54db5b31a9018de74d80400a" name="a4ef9683a54db5b31a9018de74d80400a"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Wallet</b> (const <a class="el" href="classWallet.html">Wallet</a> &amp;)=delete</td></tr>
@@ -110,8 +122,8 @@ EVP_PKEY *&#160;</td><td class="memItemRight" valign="bottom"><b>getPrivateKey</
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a6603c0bf6a090a4dccc1a6db929775f4" id="r_a6603c0bf6a090a4dccc1a6db929775f4"><td class="memItemLeft" align="right" valign="top"><a id="a6603c0bf6a090a4dccc1a6db929775f4" name="a6603c0bf6a090a4dccc1a6db929775f4"></a>
-static <a class="el" href="classWallet.html">Wallet</a>&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (const std::string &amp;path)</td></tr>
+<tr class="memitem:a6603c0bf6a090a4dccc1a6db929775f4" id="r_a6603c0bf6a090a4dccc1a6db929775f4"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classWallet.html">Wallet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWallet.html#a6603c0bf6a090a4dccc1a6db929775f4">load</a> (const std::string &amp;path)</td></tr>
+<tr class="memdesc:a6603c0bf6a090a4dccc1a6db929775f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a wallet from a private key file.  <br /></td></tr>
 <tr class="separator:a6603c0bf6a090a4dccc1a6db929775f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -123,6 +135,198 @@ EVP_PKEY *&#160;</td><td class="memItemRight" valign="bottom"><b>keypair</b></td
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>address</b></td></tr>
 <tr class="separator:acb84b316931574393a098f16bf79a19d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a blockchain wallet containing a cryptographic keypair and address. </p>
+<p>A <a class="el" href="classWallet.html" title="Represents a blockchain wallet containing a cryptographic keypair and address.">Wallet</a> stores a private/public keypair used to sign transactions and an associated blockchain address derived from the public key.</p>
+<p>Responsibilities:</p><ul>
+<li>Generate and store a secure asymmetric keypair (private + public).</li>
+<li>Provide the blockchain address for receiving funds.</li>
+<li>Create and sign transactions.</li>
+<li>Save/load wallet data to/from disk for persistence.</li>
+</ul>
+<p>The wallet ensures that private keys never leave its control except when explicitly saved to a file. Copy operations are disabled to prevent accidental duplication of sensitive key material, but move operations are allowed for transfer of ownership.</p>
+<p>Uses OpenSSL for cryptographic operations. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ad9be9e49244b78db9099fcaeccd1af04" name="ad9be9e49244b78db9099fcaeccd1af04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9be9e49244b78db9099fcaeccd1af04">&#9670;&#160;</a></span>Wallet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Wallet::Wallet </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a new wallet with a freshly generated keypair. </p>
+<p>The wallet will generate a secure elliptic curve keypair and derive a blockchain address from the public key. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a49e94aa9a8324dddeb8c8677d7992c0e" name="a49e94aa9a8324dddeb8c8677d7992c0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49e94aa9a8324dddeb8c8677d7992c0e">&#9670;&#160;</a></span>createTransaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classTransaction.html">Transaction</a> Wallet::createTransaction </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>to</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>amount</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates and signs a transaction from this wallet. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">to</td><td>Recipient's blockchain address. </td></tr>
+    <tr><td class="paramname">amount</td><td>Amount to transfer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A signed <a class="el" href="classTransaction.html" title="Represents a monetary transfer between two blockchain addresses.">Transaction</a> object ready to be added to the blockchain. </dd></dl>
+
+</div>
+</div>
+<a id="a456185bce29a187cc4fd7eb5cfcad1c8" name="a456185bce29a187cc4fd7eb5cfcad1c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a456185bce29a187cc4fd7eb5cfcad1c8">&#9670;&#160;</a></span>getAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Wallet::getAddress </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the wallet's blockchain address. </p>
+<dl class="section return"><dt>Returns</dt><dd>Address as a string. </dd></dl>
+
+</div>
+</div>
+<a id="a394f7fc75f0f370b43d6663e3184a9bc" name="a394f7fc75f0f370b43d6663e3184a9bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a394f7fc75f0f370b43d6663e3184a9bc">&#9670;&#160;</a></span>getPrivateKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EVP_PKEY * Wallet::getPrivateKey </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a pointer to the wallet's private key. </p>
+<dl class="section return"><dt>Returns</dt><dd>EVP_PKEY pointer (do not free externally). </dd></dl>
+
+</div>
+</div>
+<a id="aabfcc645310b64a19884efd8b186e58b" name="aabfcc645310b64a19884efd8b186e58b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabfcc645310b64a19884efd8b186e58b">&#9670;&#160;</a></span>getPublicKeyString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Wallet::getPublicKeyString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the public key as a string. </p>
+<dl class="section return"><dt>Returns</dt><dd>Public key in string (PEM) format. </dd></dl>
+
+</div>
+</div>
+<a id="a6603c0bf6a090a4dccc1a6db929775f4" name="a6603c0bf6a090a4dccc1a6db929775f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6603c0bf6a090a4dccc1a6db929775f4">&#9670;&#160;</a></span>load()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classWallet.html">Wallet</a> Wallet::load </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Loads a wallet from a private key file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Path to the file containing the wallet's private key. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new <a class="el" href="classWallet.html" title="Represents a blockchain wallet containing a cryptographic keypair and address.">Wallet</a> instance containing the loaded keypair. </dd></dl>
+
+</div>
+</div>
+<a id="af7555f45b184eece127bc8b8799a2049" name="af7555f45b184eece127bc8b8799a2049"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7555f45b184eece127bc8b8799a2049">&#9670;&#160;</a></span>save()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wallet::save </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Saves the wallet's private key to a file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Path to the file where the key will be stored. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="wallet_8hpp_source.html">wallet.hpp</a></li>
 <li>src/<b>wallet.cpp</b></li>

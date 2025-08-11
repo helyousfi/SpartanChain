@@ -75,20 +75,25 @@ $(function() {
   <div class="headertitle"><div class="title">Transaction Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents a monetary transfer between two blockchain addresses.  
+ <a href="classTransaction.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="transaction_8hpp_source.html">transaction.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a65259abb6f81d2ca8fec56ea9d64187e" id="r_a65259abb6f81d2ca8fec56ea9d64187e"><td class="memItemLeft" align="right" valign="top"><a id="a65259abb6f81d2ca8fec56ea9d64187e" name="a65259abb6f81d2ca8fec56ea9d64187e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Transaction</b> (std::string_view fromAdr, std::string_view toAdr, double amnt)</td></tr>
+<tr class="memitem:a65259abb6f81d2ca8fec56ea9d64187e" id="r_a65259abb6f81d2ca8fec56ea9d64187e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTransaction.html#a65259abb6f81d2ca8fec56ea9d64187e">Transaction</a> (std::string_view fromAdr, std::string_view toAdr, double amnt)</td></tr>
+<tr class="memdesc:a65259abb6f81d2ca8fec56ea9d64187e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new transaction.  <br /></td></tr>
 <tr class="separator:a65259abb6f81d2ca8fec56ea9d64187e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a749f98a5ea3cf4c4cfd1b5610a6161eb" id="r_a749f98a5ea3cf4c4cfd1b5610a6161eb"><td class="memItemLeft" align="right" valign="top"><a id="a749f98a5ea3cf4c4cfd1b5610a6161eb" name="a749f98a5ea3cf4c4cfd1b5610a6161eb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>signTransaction</b> (EVP_PKEY *privateKey)</td></tr>
+<tr class="memitem:a749f98a5ea3cf4c4cfd1b5610a6161eb" id="r_a749f98a5ea3cf4c4cfd1b5610a6161eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTransaction.html#a749f98a5ea3cf4c4cfd1b5610a6161eb">signTransaction</a> (EVP_PKEY *privateKey)</td></tr>
+<tr class="memdesc:a749f98a5ea3cf4c4cfd1b5610a6161eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signs the transaction using the sender's private key.  <br /></td></tr>
 <tr class="separator:a749f98a5ea3cf4c4cfd1b5610a6161eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa106158ade1360319b41cfe23fd4aea" id="r_aaa106158ade1360319b41cfe23fd4aea"><td class="memItemLeft" align="right" valign="top"><a id="aaa106158ade1360319b41cfe23fd4aea" name="aaa106158ade1360319b41cfe23fd4aea"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isValid</b> () const</td></tr>
+<tr class="memitem:aaa106158ade1360319b41cfe23fd4aea" id="r_aaa106158ade1360319b41cfe23fd4aea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTransaction.html#aaa106158ade1360319b41cfe23fd4aea">isValid</a> () const</td></tr>
+<tr class="memdesc:aaa106158ade1360319b41cfe23fd4aea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the transaction is valid.  <br /></td></tr>
 <tr class="separator:aaa106158ade1360319b41cfe23fd4aea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9e8831c4986fab006d5f57a85e45d95" id="r_ac9e8831c4986fab006d5f57a85e45d95"><td class="memItemLeft" align="right" valign="top"><a id="ac9e8831c4986fab006d5f57a85e45d95" name="ac9e8831c4986fab006d5f57a85e45d95"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>calculateHash</b> () const</td></tr>
+<tr class="memitem:ac9e8831c4986fab006d5f57a85e45d95" id="r_ac9e8831c4986fab006d5f57a85e45d95"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTransaction.html#ac9e8831c4986fab006d5f57a85e45d95">calculateHash</a> () const</td></tr>
+<tr class="memdesc:ac9e8831c4986fab006d5f57a85e45d95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the SHA-256 hash of the transaction's contents.  <br /></td></tr>
 <tr class="separator:ac9e8831c4986fab006d5f57a85e45d95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a396d3959484cdbccbe0c5f43838a0f06" id="r_a396d3959484cdbccbe0c5f43838a0f06"><td class="memItemLeft" align="right" valign="top"><a id="a396d3959484cdbccbe0c5f43838a0f06" name="a396d3959484cdbccbe0c5f43838a0f06"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getFrom</b> () const noexcept</td></tr>
@@ -112,6 +117,137 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getHash</b> ()
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> () const noexcept</td></tr>
 <tr class="separator:a4310592e07bd109e96ef6e4e90c93e59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a monetary transfer between two blockchain addresses. </p>
+<p>A <a class="el" href="classTransaction.html" title="Represents a monetary transfer between two blockchain addresses.">Transaction</a> records the sender address, recipient address, amount, timestamp, and cryptographic signature. Transactions are hashed to ensure immutability, and can be signed and validated using public-key cryptography.</p>
+<p>This class provides:</p><ul>
+<li>Secure transaction signing with a private key.</li>
+<li>Validation to ensure data integrity and authenticity.</li>
+<li>Hash calculation for use in block mining and chain verification.</li>
+<li>Read-only access to all transaction details.</li>
+</ul>
+<p>Transactions are intended to be immutable after creation and signing. Any modification would invalidate the signature and hash. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a65259abb6f81d2ca8fec56ea9d64187e" name="a65259abb6f81d2ca8fec56ea9d64187e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65259abb6f81d2ca8fec56ea9d64187e">&#9670;&#160;</a></span>Transaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Transaction::Transaction </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>fromAdr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>toAdr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>amnt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates a new transaction. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fromAdr</td><td>Address of the sender. </td></tr>
+    <tr><td class="paramname">toAdr</td><td>Address of the recipient. </td></tr>
+    <tr><td class="paramname">amnt</td><td>Amount to transfer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac9e8831c4986fab006d5f57a85e45d95" name="ac9e8831c4986fab006d5f57a85e45d95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9e8831c4986fab006d5f57a85e45d95">&#9670;&#160;</a></span>calculateHash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Transaction::calculateHash </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates the SHA-256 hash of the transaction's contents. </p>
+<dl class="section return"><dt>Returns</dt><dd>Hexadecimal string of the transaction hash. </dd></dl>
+
+</div>
+</div>
+<a id="aaa106158ade1360319b41cfe23fd4aea" name="aaa106158ade1360319b41cfe23fd4aea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa106158ade1360319b41cfe23fd4aea">&#9670;&#160;</a></span>isValid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Transaction::isValid </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if the transaction is valid. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the transaction's signature and hash are valid, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a749f98a5ea3cf4c4cfd1b5610a6161eb" name="a749f98a5ea3cf4c4cfd1b5610a6161eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a749f98a5ea3cf4c4cfd1b5610a6161eb">&#9670;&#160;</a></span>signTransaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Transaction::signTransaction </td>
+          <td>(</td>
+          <td class="paramtype">EVP_PKEY *&#160;</td>
+          <td class="paramname"><em>privateKey</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Signs the transaction using the sender's private key. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">privateKey</td><td>Pointer to the sender's private key.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The signature ensures that only the owner of the corresponding public key could have created this transaction. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="transaction_8hpp_source.html">transaction.hpp</a></li>
 <li>src/<b>transaction.cpp</b></li>

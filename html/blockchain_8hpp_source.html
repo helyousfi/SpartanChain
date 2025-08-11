@@ -93,8 +93,8 @@ $(document).ready(function() { init_codefold(0); });
 <div class="foldopen" id="foldopen00033" data-start="{" data-end="};">
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classBlockchain.html">   33</a></span><span class="keyword">class </span><a class="code hl_class" href="classBlockchain.html">Blockchain</a> final {</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> DEFAULT_DIFFICULTY = 4;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> DEFAULT_REWARD = 5;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> DEFAULT_DIFFICULTY = 4; <span class="comment">// default difficulty set to 4</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> DEFAULT_REWARD = 5; <span class="comment">// default reward set to 5</span></div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">alignas</span>(64) std::vector&lt;Block&gt; chain;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    std::vector&lt;Transaction&gt; pendingTransactions;</div>
@@ -139,7 +139,7 @@ $(document).ready(function() { init_codefold(0); });
 </div>
 <div class="ttc" id="aclassBlock_html"><div class="ttname"><a href="classBlock.html">Block</a></div><div class="ttdef"><b>Definition</b> block.hpp:15</div></div>
 <div class="ttc" id="aclassBlockchain_html"><div class="ttname"><a href="classBlockchain.html">Blockchain</a></div><div class="ttdoc">Represents the blockchain ledger and its core operations.</div><div class="ttdef"><b>Definition</b> blockchain.hpp:33</div></div>
-<div class="ttc" id="aclassTransaction_html"><div class="ttname"><a href="classTransaction.html">Transaction</a></div><div class="ttdef"><b>Definition</b> transaction.hpp:9</div></div>
+<div class="ttc" id="aclassTransaction_html"><div class="ttname"><a href="classTransaction.html">Transaction</a></div><div class="ttdoc">Represents a monetary transfer between two blockchain addresses.</div><div class="ttdef"><b>Definition</b> transaction.hpp:27</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

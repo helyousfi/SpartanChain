@@ -32,8 +32,8 @@
  */
 class Blockchain final {
 private:
-    static constexpr int DEFAULT_DIFFICULTY = 4;
-    static constexpr int DEFAULT_REWARD = 5;
+    static constexpr int DEFAULT_DIFFICULTY = 4; // default difficulty set to 4
+    static constexpr int DEFAULT_REWARD = 5; // default reward set to 5
     
     alignas(64) std::vector<Block> chain;
     std::vector<Transaction> pendingTransactions;

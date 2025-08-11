@@ -1,0 +1,61 @@
+# Compiled object files
+*.o
+*.obj
+*.lo
+*.la
+*.al
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Debug files
+*.dSYM/
+*.pdb
+*.idb
+
+# Build directories
+build/
+bin/
+dist/
+
+# IDE files
+# VS Code
+.vscode/
+*.code-workspace
+
+# CLion / JetBrains
+.idea/
+cmake-build-*/
+
+# Code::Blocks
+*.depend
+*.layout
+
+# Qt Creator
+*.pro.user
+*.qbs.user
+*.creator.user
+*.autosave
+
+# Make/CMake temporary files
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+compile_commands.json
+
+# Other system files
+.DS_Store
+Thumbs.db
+

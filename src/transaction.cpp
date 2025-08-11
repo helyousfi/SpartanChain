@@ -6,8 +6,7 @@
 #include <chrono>
 
 Transaction::Transaction(std::string_view fromAdr, std::string_view toAdr, double amnt) : 
-	from(std::move(fromAdr)), to(std::move(toAdr)), amount(amnt), signature("") 
-{
+	from(std::move(fromAdr)), to(std::move(toAdr)), amount(amnt), signature("") {
 	auto now = std::chrono::system_clock::now();
 	auto now_time_t = std::chrono::system_clock::to_time_t(now);
 
@@ -18,8 +17,7 @@ Transaction::Transaction(std::string_view fromAdr, std::string_view toAdr, doubl
 	hash = calculateHash();
 }
 
-void Transaction::signTransaction(EVP_PKEY* privateKey)
-{
+void Transaction::signTransaction(EVP_PKEY* privateKey) {
 	if(from == SYSTEM_ADDRESS) return; // no signature for mining rewards
 	signature = Crypto::sign(hash, privateKey);
 }
@@ -30,15 +28,13 @@ std::string Transaction::calculateHash() const{
 }
 bool Transaction::isValid() const {
 	if(from == SYSTEM_ADDRESS) return true;
-	if(signature.empty())
-	{
+	if(signature.empty()){
 		std::cerr << "Transaction missing signature!" << std::endl;
 		return false;
 	}
 
 	EVP_PKEY* pubKey = Crypto::getPublicKeyFromString(from);
-	if(!pubKey)
-	{
+	if(!pubKey){
 		std::cerr << "Invalid public key" << std::endl;
 		return false;
 	}
@@ -46,8 +42,7 @@ bool Transaction::isValid() const {
 	EVP_PKEY_free(pubKey);
 	return result;
 }
-std::string Transaction::toString() const noexcept
-{
+std::string Transaction::toString() const noexcept {
         std::stringstream ss;
 	ss << "From "<< from << " to " << to << " : " << amount << std::endl;
 	return ss.str();

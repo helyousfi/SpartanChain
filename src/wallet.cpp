@@ -15,13 +15,6 @@ Wallet::Wallet() {
         throw std::runtime_error("Failed to generate keypair");
     }
     address = Crypto::getPublicKeyString(keypair); // Public key
-
-}
-
-Wallet::~Wallet() {
-    if (keypair) {
-        EVP_PKEY_free(keypair);
-    }
 }
 
 Wallet::Wallet(Wallet&& other) noexcept {
@@ -30,14 +23,10 @@ Wallet::Wallet(Wallet&& other) noexcept {
     other.keypair = nullptr;
 }
 
-Wallet& Wallet::operator=(Wallet&& other) noexcept {
-    if (this != &other) {
-        if (keypair) EVP_PKEY_free(keypair);
-        keypair = other.keypair;
-        address = std::move(other.address);
-        other.keypair = nullptr;
+Wallet::~Wallet() {
+    if (keypair) {
+        EVP_PKEY_free(keypair);
     }
-    return *this;
 }
 
 void Wallet::save(const std::string& path) const {
@@ -69,12 +58,7 @@ std::string Wallet::getAddress() const {
 }
 
 std::string Wallet::getPublicKeyString() const {
-    return Crypto::getPublicKeyString(keypair);
-}
-
-EVP_PKEY* Wallet::getPrivateKey() const 
-{
-	return keypair;
+    return address;
 }
 
 Transaction Wallet::createTransaction(const std::string& to, int amount) {
@@ -83,4 +67,12 @@ Transaction Wallet::createTransaction(const std::string& to, int amount) {
     return tx;
 }
 
-
+Wallet& Wallet::operator=(Wallet&& other) noexcept {
+    if (this != &other) {
+        if (keypair) EVP_PKEY_free(keypair);
+        keypair = other.keypair;
+        address = std::move(other.address);
+        other.keypair = nullptr;
+    }
+    return *this;
+}
